@@ -1,0 +1,12 @@
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+renv/library/
+data/raw/
+data/processed/
+outputs/figures/
+outputs/models/
+outputs/tables/
+.DS_Store
