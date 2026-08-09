@@ -1,4 +1,3 @@
-install.packages("renv")
 # 01_clinical_genomics_ai
 
 Clinical genomics AI pipeline: data preparation, cohort matching, feature
