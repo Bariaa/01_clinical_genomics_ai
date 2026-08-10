@@ -1,0 +1,24 @@
+# environment.yml — R environment specification
+#
+# Primary reproducibility method for this project is renv (recommended for R):
+#   install.packages("renv")
+#   renv::init()      # run once, creates renv.lock automatically
+#   renv::restore()   # run by collaborators to reproduce the exact package versions
+#
+# This file is provided as a secondary/conda-based option, useful if you need
+# R installed via conda (e.g., on a shared cluster) rather than a system R install.
+
+name: clinical-genomics-ai
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-base=4.3
+  - r-tidyverse=2.0
+  - r-yaml=2.3
+  - r-here=1.0
+  - r-rmarkdown=2.25
+  - bioconductor-tcgabiolinks=2.30
+  - bioconductor-maftools=2.18
+  - r-caret=6.0

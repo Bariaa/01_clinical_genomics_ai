@@ -1,0 +1,32 @@
+# =============================================================================
+# config.yaml — Central configuration for 01_clinical_genomics_ai
+# Read this into R scripts with: yaml::read_yaml("config/config.yaml")
+# =============================================================================
+
+project:
+  name: "01_clinical_genomics_ai"
+  seed: 42
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  data_example: "data/example"
+  outputs_tables: "outputs/tables"
+  outputs_figures: "outputs/figures"
+  outputs_models: "outputs/models"
+  outputs_reports: "outputs/reports"
+
+datasets:
+  primary:
+    name: "TCGA-BRCA"
+    role: "primary"
+  secondary:
+    name: "TCGA-LUAD"
+    role: "secondary"
+  tertiary_stress_test:
+    name: "TCGA-LAML"
+    role: "tertiary_stress_test"
+
+pipeline:
+  min_sample_completeness: 0.80
+  id_matching_key: "patient_barcode"
