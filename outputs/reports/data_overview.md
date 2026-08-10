@@ -39,3 +39,25 @@ has been run on the downloaded data.)*
 - Sample sizes verified via live GDC query on the date this file was last updated.
   Re-run the verification script periodically, as GDC cohort sizes can change
   slightly over time (e.g., embargoed cases being released).
+  ## Extracted Clinical Metadata
+
+A sample-level clinical metadata extraction (`outputs/tables/clinical_metadata_extracted.csv`)
+was generated via `scripts/extract_clinical_metadata.R`, containing the following fields:
+`patient_id`, `sample_id`, `age`, `sex`, `diagnosis`, `vital_status`, `days_to_death`,
+`days_to_last_follow_up`, `survival_status`, `treatment_response`, `relapse_status`, `risk_group`.
+
+**Granularity:** one row per sample (patients with multiple samples appear multiple times).
+
+| Dataset | Sample-level rows | % with sample_id | Notes |
+|---|---|---|---|
+| TCGA-BRCA | 3397 | 100% | |
+| TCGA-LUAD | 1781 | 100% | |
+| TCGA-LAML | 697 | 100% | |
+
+**Field availability notes:**
+- `patient_id`, `sample_id`, `age`, `sex`, `diagnosis`, `vital_status`, `days_to_death`,
+  `days_to_last_follow_up`, `survival_status` — populated directly or derived from GDC clinical/biospecimen data.
+- `treatment_response`, `relapse_status` — sparsely populated; most values are `N/A`
+  as these are inconsistently recorded in GDC across patients.
+- `risk_group` — always `N/A`; no direct GDC equivalent exists. Would need to be
+  computed separately (e.g., cytogenetic risk criteria for LAML) if required downstream.
