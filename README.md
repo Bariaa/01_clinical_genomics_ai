@@ -48,6 +48,9 @@ Full justification is documented in `outputs/reports/dataset_selection_report.md
 ├── renv.lock # generated after running renv::init()
 └── README.md
 
+## Prerequisites (Windows)
+Rtools is required to build some Bioconductor dependencies from source
+(e.g., `httr2`, `rlang`). Install from: https://cran.rstudio.com/bin/windows/Rtools/
 
 ## Setup
 

@@ -22,3 +22,7 @@ dependencies:
   - bioconductor-tcgabiolinks=2.30
   - bioconductor-maftools=2.18
   - r-caret=6.0
+  - r-httr2
+  - r-dbplyr
+  - r-rlang
+  - r-pkgbuild
