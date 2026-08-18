@@ -61,3 +61,29 @@ was generated via `scripts/extract_clinical_metadata.R`, containing the followin
   as these are inconsistently recorded in GDC across patients.
 - `risk_group` — always `N/A`; no direct GDC equivalent exists. Would need to be
   computed separately (e.g., cytogenetic risk criteria for LAML) if required downstream.
+  
+  ## Extracted Mutation Metadata
+
+A row-level genomic mutation extraction (`outputs/tables/mutation_metadata_extracted.csv`)
+was generated via `scripts/03b_extract_mutation_metadata.R` from the downloaded MAF
+(Masked Somatic Mutation) files, containing the following fields:
+`patient_id`, `sample_id`, `gene`, `chromosome`, `start_position`,
+`variant_classification`, `variant_type`, `reference_allele`, `tumour_allele`,
+`protein_change`, `copy_number_status`, `amplification`, `deletion`, `mutation_burden`.
+
+**Granularity:** one row per individual mutation record (not aggregated by gene or sample).
+
+| Dataset | Mutation rows | Samples covered | Notes |
+|---|---|---|---|
+| TCGA-BRCA | 89,568 | 992 | |
+| TCGA-LUAD | 194,729 | 618 | Highest mutation burden — consistent with smoking-related mutagenesis typical of lung adenocarcinoma |
+| TCGA-LAML | 3,900 | 153 | Lowest mutation burden — consistent with AML's typically low somatic mutation rate relative to solid tumors |
+
+**Field availability notes:**
+- `gene`, `chromosome`, `start_position`, `variant_classification`, `variant_type`,
+  `reference_allele`, `tumour_allele`, `protein_change` — populated directly from MAF data.
+- `mutation_burden` — computed (mutation count per sample), not a native MAF field.
+- `copy_number_status`, `amplification`, `deletion` — always `N/A`. These require a
+  separate Copy Number Variation query (different GDC data category from Simple
+  Nucleotide Variation) and are out of scope for this extraction script. If needed,
+  a follow-up script (e.g., `03c_extract_cnv_metadata.R`) would be required.
