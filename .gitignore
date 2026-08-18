@@ -8,5 +8,12 @@ data/raw/
 data/processed/
 outputs/figures/
 outputs/models/
-outputs/tables/
 .DS_Store
+
+# GDC download tool and manifests (not part of the repo)
+gdc-client*/
+gdc-client*.zip
+gdc_manifest.txt
+MANIFEST.txt
+gdc_client_configuration.dtt
+*.tar.gz
