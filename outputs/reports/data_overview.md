@@ -87,3 +87,23 @@ was generated via `scripts/03b_extract_mutation_metadata.R` from the downloaded 
   separate Copy Number Variation query (different GDC data category from Simple
   Nucleotide Variation) and are out of scope for this extraction script. If needed,
   a follow-up script (e.g., `03c_extract_cnv_metadata.R`) would be required.
+  
+  
+## Known Data Limitation: Follow-Up Time
+
+`days_to_last_follow_up` is populated for only 1 of 1098 BRCA patients (99.9% missing)
+when retrieved via `GDCquery_clinic(type = "clinical")`. This is a known limitation of
+this endpoint — detailed follow-up records are stored in a separate GDC data category
+("Clinical Supplement" / BCR Biotab) not included in the flattened clinical summary.
+`days_to_last_known_disease_status` was checked as a fallback and found to be entirely
+empty as well.
+
+**Impact:** `overall_survival_days` is reliably available only for deceased patients
+(via `days_to_death`), not for censored ("alive") patients. Any survival-time analysis
+(e.g., Kaplan-Meier, Cox models) using this field will be limited to the ~14% of
+patients with a recorded death. `vital_status`, `age`, `diagnosis`, and mutation data
+remain fully usable and unaffected by this limitation.
+
+**Future improvement:** A dedicated query against the GDC "Clinical Supplement" data
+category (BCR Biotab format) would likely recover proper follow-up times, but is out
+of scope for the current pipeline version.
