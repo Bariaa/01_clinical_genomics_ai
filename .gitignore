@@ -5,7 +5,6 @@
 *.Rproj
 renv/library/
 data/raw/
-data/processed/
 .DS_Store
 
 # GDC download tool and manifests (not part of the repo)
