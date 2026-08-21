@@ -6,8 +6,6 @@
 renv/library/
 data/raw/
 data/processed/
-outputs/figures/
-outputs/models/
 .DS_Store
 
 # GDC download tool and manifests (not part of the repo)
