@@ -70,8 +70,17 @@ message("Unmatched in genomic (no clinical record): ", n_unmatched_genomic)
 # --- 5. Create a merged clinical-genomics table ---
 # Inner join: keep only patients present in BOTH tables (one row per mutation,
 # clinical fields repeated across each patient's mutation rows).
+# Only a focused set of clinically meaningful columns is merged in (rather than
+# all raw clinical columns) to keep the output file a manageable size, since
+# clinical fields necessarily repeat across every mutation row for a patient.
+key_clinical_cols <- intersect(
+  c("patient_id", "age", "sex_at_birth", "primary_diagnosis", "vital_status",
+    "overall_survival_days", "survival_event"),
+  names(clinical)
+)
+
 merged <- genomics %>%
-  inner_join(clinical, by = "patient_id", suffix = c("_genomic", "_clinical"))
+  inner_join(clinical[, key_clinical_cols], by = "patient_id", suffix = c("_genomic", "_clinical"))
 
 # --- Save outputs ---
 dir.create("data/processed", recursive = TRUE, showWarnings = FALSE)
