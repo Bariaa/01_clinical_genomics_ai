@@ -1,36 +1,87 @@
 # 04_match_patient_ids.R
-# Match/align patient identifiers across clinical and mutation data sources
+# Matches and merges clinical and genomic records for the PRIMARY dataset (TCGA-BRCA).
 #
-# Requires: dplyr, yaml
+# Checklist covered:
+#   1. Identify the shared patient/sample ID format
+#   2. Standardise ID strings
+#   3. Match clinical and genomic records
+#   4. Report matched and unmatched records
+#   5. Create a merged clinical-genomics table
+#
+# Expected outputs:
+#   data/processed/clinical_genomics_merged.csv
+#   outputs/tables/id_matching_summary.csv
 
 library(dplyr)
 library(yaml)
 
 config <- yaml::read_yaml("config/config.yaml")
-id_key <- config$pipeline$id_matching_key   # "patient_barcode"
 
-match_ids <- function(project_id, processed_dir) {
-  message("Matching patient IDs for: ", project_id)
-  
-  clinical <- readRDS(file.path(processed_dir, project_id, paste0(project_id, "_clinical_clean.rds")))
-  gene_summary_path <- file.path(processed_dir, project_id, paste0(project_id, "_gene_mutation_summary.csv"))
-  
-  if (!file.exists(gene_summary_path)) {
-    message("No mutation summary found for ", project_id, " — skipping ID matching for this dataset.")
-    return(invisible(NULL))
-  }
-  
-  matched_ids <- clinical %>% pull(!!id_key) %>% unique()
-  
-  message(project_id, ": ", length(matched_ids), " unique patient IDs in clinical data")
-  
-  saveRDS(matched_ids, file.path(processed_dir, project_id, paste0(project_id, "_matched_ids.rds")))
-  matched_ids
-}
+# --- 1. Load cleaned clinical and genomic tables ---
+clinical <- read.csv("data/processed/clinical_cleaned.csv", stringsAsFactors = FALSE)
+genomics <- read.csv("data/processed/genomics_cleaned.csv", stringsAsFactors = FALSE)
 
-for (role_name in names(config$datasets)) {
-  ds <- config$datasets[[role_name]]
-  match_ids(ds$name, config$paths$data_processed)
-}
+message("Loaded clinical: ", nrow(clinical), " records.")
+message("Loaded genomics: ", nrow(genomics), " records.")
 
-message("Done. Matched ID lists saved under: ", config$paths$data_processed)
+# --- 1b. Identify the shared ID format ---
+# Both tables use TCGA patient barcodes (e.g. "TCGA-A7-A0DC") as patient_id —
+# clinical is one row per patient, genomics is one row per mutation record
+# (multiple rows per patient), so the join key is patient_id in both.
+
+# --- 2. Standardise ID strings ---
+# Trim whitespace and uppercase to eliminate any casing/whitespace mismatches
+# before matching.
+clinical <- clinical %>%
+  mutate(patient_id = toupper(trimws(patient_id)))
+
+genomics <- genomics %>%
+  mutate(patient_id = toupper(trimws(patient_id)))
+
+clinical_ids <- unique(clinical$patient_id)
+genomic_ids <- unique(genomics$patient_id)
+
+# --- 3. Match clinical and genomic records ---
+matched_ids <- intersect(clinical_ids, genomic_ids)
+unmatched_clinical_ids <- setdiff(clinical_ids, genomic_ids)
+unmatched_genomic_ids <- setdiff(genomic_ids, clinical_ids)
+
+# --- 4. Report matched and unmatched records ---
+n_clinical <- length(clinical_ids)
+n_genomic <- length(genomic_ids)
+n_matched <- length(matched_ids)
+n_unmatched_clinical <- length(unmatched_clinical_ids)
+n_unmatched_genomic <- length(unmatched_genomic_ids)
+pct_matched <- round(100 * n_matched / n_clinical, 2)
+
+id_matching_summary <- data.frame(
+  number_of_clinical_records = n_clinical,
+  number_of_genomic_records = n_genomic,
+  number_of_matched_records = n_matched,
+  number_unmatched_in_clinical_data = n_unmatched_clinical,
+  number_unmatched_in_genomic_data = n_unmatched_genomic,
+  percentage_matched = pct_matched
+)
+
+message("Matched patients: ", n_matched, " (", pct_matched, "% of clinical cohort)")
+message("Unmatched in clinical (no mutation data): ", n_unmatched_clinical)
+message("Unmatched in genomic (no clinical record): ", n_unmatched_genomic)
+
+# --- 5. Create a merged clinical-genomics table ---
+# Inner join: keep only patients present in BOTH tables (one row per mutation,
+# clinical fields repeated across each patient's mutation rows).
+merged <- genomics %>%
+  inner_join(clinical, by = "patient_id", suffix = c("_genomic", "_clinical"))
+
+# --- Save outputs ---
+dir.create("data/processed", recursive = TRUE, showWarnings = FALSE)
+dir.create("outputs/tables", recursive = TRUE, showWarnings = FALSE)
+
+write.csv(merged, "data/processed/clinical_genomics_merged.csv", row.names = FALSE)
+write.csv(id_matching_summary, "outputs/tables/id_matching_summary.csv", row.names = FALSE)
+
+message("✅ Saved: data/processed/clinical_genomics_merged.csv (", nrow(merged), " rows)")
+message("✅ Saved: outputs/tables/id_matching_summary.csv")
+
+print(id_matching_summary)
+print(head(merged))
