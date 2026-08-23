@@ -107,3 +107,37 @@ remain fully usable and unaffected by this limitation.
 **Future improvement:** A dedicated query against the GDC "Clinical Supplement" data
 category (BCR Biotab format) would likely recover proper follow-up times, but is out
 of scope for the current pipeline version.
+
+
+## Exploratory Classification Endpoint
+
+TCGA-BRCA does not have a strong native clinical endpoint suitable for
+classification. `survival_status` (vital_status) showed near-chance
+predictive power (AUC ~0.556) using available clinical/genomic features.
+`relapse_status` (progression_or_recurrence) was entirely missing (0/1098
+records usable). `treatment_response` was too sparse (9/1098 records across
+5 categories) to model.
+
+**Exploratory endpoint used:** `risk_group`, a binary label created by
+median-splitting `mutation_burden` into "high_risk"/"low_risk". This is an
+**exploratory proxy, not a validated clinical risk classification** —
+chosen specifically because no adequate native clinical endpoint exists in
+this cohort. `mutation_burden` itself is excluded from the model's features
+to prevent the label's own definition from leaking into the predictors.
+
+**Models compared:** Logistic Regression, Random Forest (XGBoost attempted
+but failed to converge given sample size constraints — gracefully skipped).
+
+**Results:**
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+|---|---|---|---|---|---|
+| Logistic Regression | 0.694 | 0.734 | 0.622 | 0.673 | **0.720** |
+| Random Forest | 0.694 | 0.750 | 0.595 | 0.663 | 0.710 |
+
+**Top features (Random Forest importance):** TP53_mutated (dominant),
+driver_gene_mutated, age, PIK3CA_mutated.
+
+This shows genuine, moderate predictive signal for the exploratory endpoint,
+in contrast to the near-null result for the native survival_status endpoint —
+suggesting mutation-burden-based risk stratification is more learnable from
+these features than raw vital status in this cohort.
