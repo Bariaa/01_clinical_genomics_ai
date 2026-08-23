@@ -1,0 +1,6 @@
+"target","n_available","n_classes","min_class_n","feasible"
+"survival_status",1098,2,152,TRUE
+"risk_group",1098,2,541,TRUE
+"relapse_status",0,0,0,FALSE
+"treatment_response",9,5,1,FALSE
+"long_vs_short_survival",151,2,75,TRUE

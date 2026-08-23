@@ -1,0 +1,4 @@
+"target","n","auc_roc"
+"survival_status",1097,0.5564
+"risk_group",1097,0.7441
+"long_vs_short_survival",151,0.6347

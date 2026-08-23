@@ -1,93 +1,155 @@
 # 08_train_baseline_model.R
-# Trains a baseline model on the PRIMARY dataset (TCGA-BRCA) feature table.
+# Trains baseline models on the PRIMARY dataset (TCGA-BRCA) against multiple
+# possible prediction targets:
+#   - survival_status (alive/dead)
+#   - risk_group (high/low, derived from mutation burden as a proxy — true
+#     clinical risk_group is not available in GDC data)
+#   - relapse_status (progression_or_recurrence)
+#   - treatment_response
+#   - long_vs_short_survival (median split of overall_survival_days, deceased only)
 #
-# IMPORTANT: patient_id is used only for tracking/matching results — it is
-# explicitly excluded from the model's feature set and never used as a predictor.
+# IMPORTANT: patient_id is used only for tracking/matching — never a predictor.
 #
-# NOTE: A focused baseline predictor set is used (age, sex, mutation_burden,
-# TP53_mutated, PIK3CA_mutated, driver_gene_mutated) rather than all 37 sparse
-# gene/variant-class columns. With only ~150 "dead" events in 1097 patients,
-# using all sparse binary gene flags caused non-convergence and a degenerate
-# model that just predicted the majority class (Kappa ~ 0). This smaller,
-# clinically motivated set is a more defensible starting baseline.
+# For each target, feasibility (sample size, class balance) is checked first.
+# Targets with insufficient data are reported but NOT force-trained, since a
+# model trained on too few events per class is not meaningful.
 
 library(caret)
 library(dplyr)
 library(yaml)
 
 config <- yaml::read_yaml("config/config.yaml")
+MIN_EVENTS_PER_CLASS <- 20   # minimum cases needed in the smaller class to attempt training
 
 ml_features <- read.csv("data/processed/ml_feature_table.csv", stringsAsFactors = FALSE)
+clinical <- read.csv("data/processed/clinical_cleaned.csv", stringsAsFactors = FALSE)
 
-# --- Explicitly separate identifier from predictors ---
-patient_ids <- ml_features$patient_id   # kept aside, for tracking only
+patient_ids <- ml_features$patient_id
+base_predictors <- c("age", "sex", "mutation_burden", "TP53_mutated",
+                     "PIK3CA_mutated", "driver_gene_mutated")
 
-predictor_cols <- setdiff(names(ml_features), c("patient_id", "outcome"))
+# =========================================================================
+# BUILD EACH CANDIDATE TARGET
+# =========================================================================
 
-# Defensive check: guarantee patient_id can never leak into the model
-stopifnot(!"patient_id" %in% predictor_cols)
+targets <- list()
 
-message("Available predictor columns (patient_id excluded): ", length(predictor_cols))
+# --- 1. survival_status (alive/dead) ---
+targets$survival_status <- ml_features %>%
+  transmute(patient_id, target = factor(outcome, levels = c("alive", "dead")))
 
-# --- Prepare modeling data ---
-model_data <- ml_features %>%
-  select(all_of(predictor_cols), outcome) %>%
-  filter(!is.na(age), !is.na(outcome)) %>%
-  mutate(
-    sex = as.factor(sex),
-    outcome = factor(outcome, levels = c("alive", "dead"))
+# --- 2. risk_group (PROXY: mutation burden median split — true risk_group unavailable) ---
+med_burden <- median(ml_features$mutation_burden, na.rm = TRUE)
+targets$risk_group <- ml_features %>%
+  transmute(
+    patient_id,
+    target = factor(ifelse(mutation_burden >= med_burden, "high_risk", "low_risk"),
+                    levels = c("low_risk", "high_risk"))
   )
 
-# --- Reduce to a focused baseline feature set (avoids overfitting on sparse gene flags) ---
-baseline_predictors <- c("age", "sex", "mutation_burden", "TP53_mutated",
-                         "PIK3CA_mutated", "driver_gene_mutated")
+# --- 3. relapse_status ---
+relapse_raw <- clinical %>% select(patient_id, progression_or_recurrence)
+targets$relapse_status <- relapse_raw %>%
+  filter(!is.na(progression_or_recurrence), !progression_or_recurrence %in% c("not reported", "")) %>%
+  transmute(patient_id, target = factor(progression_or_recurrence))
 
-model_data_final <- model_data %>%
-  select(all_of(baseline_predictors), outcome) %>%
-  na.omit()
+# --- 4. treatment_response ---
+tr_raw <- clinical %>% select(patient_id, treatments_pharmaceutical_treatment_outcome)
+targets$treatment_response <- tr_raw %>%
+  filter(!is.na(treatments_pharmaceutical_treatment_outcome),
+         !treatments_pharmaceutical_treatment_outcome %in% c("Not Reported", "")) %>%
+  transmute(patient_id, target = factor(treatments_pharmaceutical_treatment_outcome))
 
-message("Final baseline modeling dataset: ", nrow(model_data_final), " patients, ",
-        length(baseline_predictors), " predictors: ", paste(baseline_predictors, collapse = ", "))
-
-# --- Train baseline model (using AUC-ROC, more informative than accuracy for imbalanced classes) ---
-set.seed(config$project$seed)
-
-model <- train(
-  outcome ~ .,
-  data = model_data_final,
-  method = "glm",
-  family = "binomial",
-  metric = "ROC",
-  trControl = trainControl(
-    method = "cv", number = 5,
-    classProbs = TRUE,
-    summaryFunction = twoClassSummary
+# --- 5. long_vs_short_survival (deceased patients only, median split of survival days) ---
+survival_days <- clinical %>%
+  filter(vital_status == "dead", !is.na(overall_survival_days))
+med_survival <- median(survival_days$overall_survival_days, na.rm = TRUE)
+targets$long_vs_short_survival <- survival_days %>%
+  transmute(
+    patient_id,
+    target = factor(ifelse(overall_survival_days >= med_survival, "long_survival", "short_survival"),
+                    levels = c("short_survival", "long_survival"))
   )
-)
 
-print(model)
+# =========================================================================
+# FEASIBILITY CHECK FOR EACH TARGET
+# =========================================================================
 
-message("AUC-ROC: ", round(max(model$results$ROC), 4),
-        " (0.5 = no better than chance, 1.0 = perfect discrimination)")
+feasibility <- lapply(names(targets), function(name) {
+  t <- targets[[name]]
+  class_counts <- table(t$target)
+  min_class_n <- if (length(class_counts) >= 2) min(class_counts) else 0
+  data.frame(
+    target = name,
+    n_available = nrow(t),
+    n_classes = length(class_counts),
+    min_class_n = min_class_n,
+    feasible = length(class_counts) >= 2 && min_class_n >= MIN_EVENTS_PER_CLASS
+  )
+}) %>% bind_rows()
 
-# --- Save model + predictions with patient_id re-attached for tracking ---
+message("=== Target feasibility summary ===")
+print(feasibility)
+
+dir.create("outputs/tables", recursive = TRUE, showWarnings = FALSE)
+write.csv(feasibility, "outputs/tables/prediction_target_feasibility.csv", row.names = FALSE)
+
+# =========================================================================
+# TRAIN A MODEL FOR EACH FEASIBLE TARGET
+# =========================================================================
+
 dir.create(config$paths$outputs_models, recursive = TRUE, showWarnings = FALSE)
-saveRDS(model, file.path(config$paths$outputs_models, "baseline_model.rds"))
+all_results <- list()
 
-predictions <- ml_features %>%
-  filter(!is.na(age), !is.na(outcome)) %>%
-  select(all_of(baseline_predictors), outcome, patient_id) %>%
-  na.omit() %>%
-  mutate(sex = as.factor(sex), outcome = factor(outcome, levels = c("alive", "dead")))
+for (name in feasibility$target[feasibility$feasible]) {
+  
+  message("\n--- Training model for target: ", name, " ---")
+  
+  target_df <- targets[[name]]
+  
+  # Exclude mutation_burden specifically when the target is derived from it
+  # (risk_group is a mutation_burden median-split proxy) — including it would
+  # leak the label definition directly into the model as a predictor.
+  predictors_for_this_target <- if (name == "risk_group") {
+    setdiff(base_predictors, "mutation_burden")
+  } else {
+    base_predictors
+  }
+  
+  model_data <- ml_features %>%
+    select(patient_id, all_of(predictors_for_this_target)) %>%
+    inner_join(target_df, by = "patient_id") %>%
+    mutate(sex = as.factor(sex)) %>%
+    select(-patient_id) %>%   # patient_id excluded from modeling — tracking only
+    na.omit()
+  set.seed(config$project$seed)
+  
+  model <- tryCatch({
+    train(
+      target ~ .,
+      data = model_data,
+      method = "glm",
+      family = "binomial",
+      metric = "ROC",
+      trControl = trainControl(method = "cv", number = 5, classProbs = TRUE, summaryFunction = twoClassSummary)
+    )
+  }, error = function(e) {
+    message("⚠️ Training failed for ", name, ": ", conditionMessage(e))
+    NULL
+  })
+  
+  if (!is.null(model)) {
+    auc <- round(max(model$results$ROC), 4)
+    message(name, ": AUC-ROC = ", auc, " (n=", nrow(model_data), ")")
+    saveRDS(model, file.path(config$paths$outputs_models, paste0("model_", name, ".rds")))
+    all_results[[name]] <- data.frame(target = name, n = nrow(model_data), auc_roc = auc)
+  }
+}
 
-predictions$predicted <- predict(model, newdata = predictions)
-predictions$predicted_prob_dead <- predict(model, newdata = predictions, type = "prob")[, "dead"]
+results_summary <- bind_rows(all_results)
+write.csv(results_summary, "outputs/tables/model_results_by_target.csv", row.names = FALSE)
 
-write.csv(
-  predictions %>% select(patient_id, outcome, predicted, predicted_prob_dead),
-  "outputs/tables/baseline_model_predictions.csv",
-  row.names = FALSE
-)
-
-message("✅ Baseline model trained on TCGA-BRCA (n=", nrow(model_data_final), ") and saved.")
-message("✅ Predictions (with patient_id for tracking only) saved to outputs/tables/baseline_model_predictions.csv")
+message("\n=== Final results across all feasible targets ===")
+print(results_summary)
+message("✅ Feasibility report: outputs/tables/prediction_target_feasibility.csv")
+message("✅ Results summary: outputs/tables/model_results_by_target.csv")

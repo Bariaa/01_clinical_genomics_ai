@@ -30,3 +30,9 @@ datasets:
 pipeline:
   min_sample_completeness: 0.80
   id_matching_key: "patient_barcode"
+  prediction_targets:
+    - "survival_status"
+    - "risk_group"
+    - "relapse_status"
+    - "treatment_response"
+    - "long_vs_short_survival"

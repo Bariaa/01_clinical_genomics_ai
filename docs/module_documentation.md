@@ -71,21 +71,34 @@ the standardized field names produced by script 02 (`age`, `sex`, `diagnosis`,
 **Outputs:** Trained model saved to `outputs/models/baseline_model.rds`.
 
 
+
 ## scripts/08_train_baseline_model.R
-**Purpose:** Trains a baseline logistic regression model on TCGA-BRCA using a
-focused set of clinical + genomic features (age, sex, mutation_burden,
-TP53_mutated, PIK3CA_mutated, driver_gene_mutated) to predict vital status.
-**patient_id is explicitly excluded from the feature set** — used only for
-tracking predictions afterward.
-**Inputs:** `data/processed/ml_feature_table.csv`
-**Outputs:** `outputs/models/baseline_model.rds`, `outputs/tables/baseline_model_predictions.csv`
-**Result:** AUC-ROC = 0.556 (barely above chance), Sens=1/Spec=0 at default
-threshold — the model defaults to predicting the majority class ("alive").
-This indicates these 6 baseline features have very limited predictive power
-for vital status in this cohort. This is an honest baseline result, not a
-pipeline error — documented here rather than hidden. Future iterations could
-explore richer feature sets, class-imbalance techniques (e.g. class weighting,
-SMOTE), or alternative outcome definitions (e.g. time-to-event survival
+**Purpose:** Trains baseline models on TCGA-BRCA against multiple candidate
+prediction targets: survival_status, risk_group (proxy: mutation_burden
+median split), relapse_status, treatment_response, and long_vs_short_survival.
+Each target's feasibility (sample size, class balance) is checked before
+training; targets below a minimum threshold (20 cases in the smaller class)
+are reported but not trained. **patient_id is always excluded from the
+feature set.**
+**Inputs:** `data/processed/ml_feature_table.csv`, `data/processed/clinical_cleaned.csv`
+**Outputs:** `outputs/tables/prediction_target_feasibility.csv`,
+`outputs/tables/model_results_by_target.csv`, one `.rds` model per feasible target.
+
+**Results:**
+| Target | AUC-ROC | n |
+|---|---|---|
+| survival_status | 0.556 | 1097 |
+| risk_group | 0.744 | 1097 |
+| long_vs_short_survival | 0.635 | 151 |
+
+**Note on risk_group:** since this target is derived from `mutation_burden`,
+that predictor is deliberately excluded when training this specific model —
+including it caused perfect (AUC=1.0) leakage, since the model could trivially
+recover the exact rule used to define the label.
+
+**Infeasible targets:** `relapse_status` had 0 usable records (entirely
+missing/unreported in GDC clinical data for this cohort); `treatment_response`
+had only 9 usable records across 5 categories — both too sparse to model.
 modeling instead of binary vital status).
 
 ## scripts/09_test_second_dataset.R
