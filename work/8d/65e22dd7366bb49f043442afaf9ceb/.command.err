@@ -1,0 +1,76 @@
+Loading required package: ggplot2
+Loading required package: lattice
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Type 'citation("pROC")' for a citation.
+
+Attaching package: ‘pROC’
+
+The following objects are masked from ‘package:stats’:
+
+    cov, smooth, var
+
+Exploratory endpoint: risk_group | n = 1097 | predictors: age, sex, TP53_mutated, PIK3CA_mutated, driver_gene_mutated
+Installing package into ‘/home/bak1987/R/x86_64-pc-linux-gnu-library/4.3’
+(as ‘lib’ is unspecified)
+trying URL 'https://cloud.r-project.org/src/contrib/xgboost_3.2.1.1.tar.gz'
+Content type 'application/x-gzip' length 1625267 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+* installing *source* package ‘xgboost’ ...
+** package ‘xgboost’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Makevars:22: -DXGBOOST_BUILTIN_PREFETCH_PRESENT=1
+Makevars:22: -DXGBOOST_MM_PREFETCH_PRESENT=1
+Makevars:22: -DXGBOOST_STRICT_R_MODE=1
+Makevars:22: -DDMLC_LOG_BEFORE_THROW=0
+Makevars:22: -DDMLC_ENABLE_STD_THREAD=1
+Makevars:22: -DDMLC_DISABLE_STDIN=1
+Makevars:22: -DDMLC_LOG_CUSTOMIZE=1
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0’
+using C++ compiler: ‘g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0’
+using C++17
+Makevars:22: -DXGBOOST_BUILTIN_PREFETCH_PRESENT=1
+Makevars:22: -DXGBOOST_MM_PREFETCH_PRESENT=1
+Makevars:22: -DXGBOOST_STRICT_R_MODE=1
+Makevars:22: -DDMLC_LOG_BEFORE_THROW=0
+Makevars:22: -DDMLC_ENABLE_STD_THREAD=1
+Makevars:22: -DDMLC_DISABLE_STDIN=1
+Makevars:22: -DDMLC_LOG_CUSTOMIZE=1
+installing to /home/bak1987/R/x86_64-pc-linux-gnu-library/4.3/00LOCK-xgboost/00new/xgboost/libs
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (xgboost)
+
+The downloaded source packages are in
+	‘/tmp/RtmplCI18K/downloaded_packages’
+⚠️ XGBoost training failed: Stopping
+There were 50 or more warnings (use warnings() to see the first 50)
+
+=== Model performance summary ===
+
+=== Feature importance (Random Forest) ===
+
+✅ Best model: logistic_regression (ROC-AUC = 0.7198)
+✅ All outputs saved: model_performance_summary.csv, feature_importance.csv, confusion_matrix.png, roc_curve.png, baseline_model.rds

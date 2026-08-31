@@ -1,0 +1,22 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+TCGA-BRCA: loaded 1098 raw records.
+TCGA-BRCA: removed 0 duplicate patient_id rows.
+✅ Saved: data/processed/clinical_cleaned.csv (1098 rows)
+✅ Saved: outputs/tables/clinical_missingness_summary.csv

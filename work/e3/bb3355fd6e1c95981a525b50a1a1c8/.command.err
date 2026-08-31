@@ -1,0 +1,16 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+TCGA-BRCA: loaded 89568 raw mutation records.
+✅ Saved: data/processed/genomics_cleaned.csv (89568 rows)
+✅ Saved: outputs/tables/top_mutated_genes.csv (16662 genes)
+✅ Saved: outputs/tables/mutation_counts_per_patient.csv (968 patients)
+✅ Saved: outputs/tables/variant_classification_summary.csv

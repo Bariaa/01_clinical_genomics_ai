@@ -1,0 +1,21 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loaded genomics: 89568 rows | clinical: 1098 rows | merged: 89568 rows
+✅ Saved all 5 summary tables to outputs/tables/
+  n_patients_with_mutations min_mutations q1_mutations median_mutations
+1                       968             2           29               45
+  mean_mutations q3_mutations max_mutations sd_mutations
+1          92.53           81          5978       284.77
+    dataset n_clinical_patients n_patients_with_genomic_data pct_deceased
+1 TCGA-BRCA                1098                          968        13.86
+  median_age median_mutation_burden top_mutated_gene top_gene_mutated_samples
+1         58                     45             TP53                      332
