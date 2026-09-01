@@ -36,3 +36,38 @@ pipeline:
     - "relapse_status"
     - "treatment_response"
     - "long_vs_short_survival"
+    
+    # =============================================================================
+# Column and variable definitions
+# =============================================================================
+columns:
+  clinical_id_column: "patient_id"       # standardized patient ID in clinical_cleaned.csv
+  genomic_id_column: "patient_id"        # standardized patient ID in genomics_cleaned.csv
+  outcome_variable: "outcome"            # target column in ml_feature_table.csv (vital_status derived)
+
+# =============================================================================
+# Feature engineering settings
+# =============================================================================
+features:
+  top_genes_to_encode: 10                # number of top mutated genes to one-hot encode as features
+  explicit_genes: ["TP53", "KRAS", "PIK3CA"]  # always-included gene features regardless of ranking
+
+# =============================================================================
+# Plot settings
+# =============================================================================
+plots:
+  figure_width: 8
+  figure_height: 6
+  dpi: 300
+  color_palette: "steelblue"
+  theme: "minimal"
+
+# =============================================================================
+# Model settings
+# =============================================================================
+model:
+  train_test_split: 0.8
+  cv_folds: 5
+  seed: 42
+  models_to_run: ["logistic_regression", "random_forest", "xgboost"]
+  primary_metric: "ROC"

@@ -26,3 +26,10 @@ dependencies:
   - r-dbplyr
   - r-rlang
   - r-pkgbuild
+  - r-janitor
+  - r-tidyr
+  - r-proc
+  - r-randomforest
+  - r-survival
+  - r-survminer
+  - r-ggplot2

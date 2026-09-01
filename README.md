@@ -101,3 +101,26 @@ is not committed to this repository (see `.gitignore`).
 
 Weinstein JN, et al. *The Cancer Genome Atlas Pan-Cancer analysis project.*
 Nat Genet. 2013.
+
+## Example Run Commands
+
+This is an R-based pipeline (not Python). Scripts currently read
+`config/config.yaml` via a hardcoded path rather than a `--config`
+command-line flag — a known limitation, noted below.
+
+```bash
+Rscript scripts/02_clean_clinical_data.R
+Rscript scripts/03_process_mutation_data.R
+Rscript scripts/04_match_patient_ids.R
+Rscript scripts/05_generate_summary_tables.R
+Rscript scripts/06_generate_figures.R
+Rscript scripts/07_build_ml_feature_table.R
+Rscript scripts/08_train_baseline_model.R
+Rscript scripts/test_luad_generalizability.R   # secondary dataset test
+```
+
+**Known limitation:** scripts do not yet accept a `--config` argument;
+`config/config.yaml` is read via a fixed relative path from the project
+root. A future improvement would add CLI argument parsing (e.g. via the
+`optparse` R package) so scripts can be pointed at alternate config files
+without editing the hardcoded path.

@@ -460,6 +460,27 @@ policies. Raw data is not committed to this repository (see
 <p>Weinstein JN, et al. <em>The Cancer Genome Atlas Pan-Cancer analysis
 project.</em> Nat Genet. 2013.</p>
 </div>
+<div id="example-run-commands" class="section level2">
+<h2>Example Run Commands</h2>
+<p>This is an R-based pipeline (not Python). Scripts currently read
+<code>config/config.yaml</code> via a hardcoded path rather than a
+<code>--config</code> command-line flag — a known limitation, noted
+below.</p>
+<pre class="bash"><code>Rscript scripts/02_clean_clinical_data.R
+Rscript scripts/03_process_mutation_data.R
+Rscript scripts/04_match_patient_ids.R
+Rscript scripts/05_generate_summary_tables.R
+Rscript scripts/06_generate_figures.R
+Rscript scripts/07_build_ml_feature_table.R
+Rscript scripts/08_train_baseline_model.R
+Rscript scripts/test_luad_generalizability.R   # secondary dataset test</code></pre>
+<p><strong>Known limitation:</strong> scripts do not yet accept a
+<code>--config</code> argument; <code>config/config.yaml</code> is read
+via a fixed relative path from the project root. A future improvement
+would add CLI argument parsing (e.g. via the <code>optparse</code> R
+package) so scripts can be pointed at alternate config files without
+editing the hardcoded path.</p>
+</div>
 </div>
 
 
