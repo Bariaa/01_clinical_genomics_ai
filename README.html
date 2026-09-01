@@ -352,8 +352,9 @@ display: none;
 </div>
 
 
-<div id="clinical_genomics_ai" class="section level1">
-<h1>01_clinical_genomics_ai</h1>
+<div id="clinical-genomics-ai-tcga-multi-cancer-pipeline-generalizability-study" class="section level1">
+<h1># Clinical Genomics AI: TCGA Multi-Cancer Pipeline Generalizability
+Study</h1>
 <p>Clinical genomics AI pipeline: data preparation, cohort matching,
 feature engineering, and baseline modeling across TCGA datasets, with a
 secondary dataset used to test <strong>pipeline
@@ -412,6 +413,141 @@ outputs/ │ ├── tables/ │ ├── figures/ │ ├── models/ │ 
 data_overview.md │ └── dataset_selection_report.md ├── config/ │ └──
 config.yaml ├── environment/ │ └── environment.yml ├── renv.lock #
 generated after running renv::init() └── README.md</p>
+</div>
+<div id="input-data-requirements" class="section level2">
+<h2>Input Data Requirements</h2>
+<p>This pipeline requires raw TCGA data to be downloaded before running
+any processing scripts: - <strong>Clinical data</strong>:
+<code>data/raw/&lt;DATASET&gt;/&lt;DATASET&gt;_clinical.rds</code> (via
+<code>TCGAbiolinks::GDCquery_clinic()</code>) - <strong>Mutation data
+(MAF)</strong>:
+<code>data/raw/&lt;DATASET&gt;/&lt;DATASET&gt;_maf.rds</code> (via
+<code>TCGAbiolinks::GDCquery()</code> + <code>GDCdownload()</code>)</p>
+<p>Downloads require an internet connection and, on Windows, the
+standalone <a href="https://gdc.cancer.gov/access-data/gdc-data-transfer-tool">GDC
+Data Transfer Tool</a> for reliable large-file downloads
+(<code>method = &quot;client&quot;</code> in <code>GDCdownload()</code>). Raw data
+is not committed to this repository — each user must download it
+independently (see <code>.gitignore</code>).</p>
+</div>
+<div id="installation-instructions" class="section level2">
+<h2>Installation Instructions</h2>
+<ol style="list-style-type: decimal">
+<li>Install <a href="https://cran.r-project.org/">R</a> (4.3+) and <a href="https://posit.co/download/rstudio-desktop/">RStudio</a></li>
+<li>Clone this repository</li>
+<li>Open <code>01_clinical_genomics_ai.Rproj</code> in RStudio</li>
+<li>Install <code>renv</code> and restore the locked package environment
+(see Setup below)</li>
+<li>On Windows, install <a href="https://cran.rstudio.com/bin/windows/Rtools/">Rtools</a> (see
+Prerequisites below)</li>
+</ol>
+</div>
+<div id="conda-setup-instructions" class="section level2">
+<h2>Conda Setup Instructions</h2>
+<p>An alternate conda-based environment is provided in
+<code>environment/environment.yml</code>, useful when R needs to run via
+conda (e.g. on a shared cluster) rather than a system R install:</p>
+<pre class="bash"><code>conda env create -f environment/environment.yml
+conda activate clinical-genomics-ai</code></pre>
+<p><strong>Note:</strong> <code>renv</code> (see Setup below) is the
+primary reproducibility method for this project; the conda environment
+is a secondary option.</p>
+</div>
+<div id="docker-setup-instructions" class="section level2">
+<h2>Docker Setup Instructions</h2>
+<p>A first-attempt <code>environment/Dockerfile</code> is provided for
+containerising the environment:</p>
+<pre class="bash"><code>docker build -t clinical-genomics-ai -f environment/Dockerfile .
+docker run -it clinical-genomics-ai</code></pre>
+<p><strong>Known limitation:</strong> this Dockerfile has not yet been
+built or tested (Docker was not available in the development environment
+used for this project) — see the note at the top of the Dockerfile
+itself.</p>
+</div>
+<div id="expected-outputs" class="section level2">
+<h2>Expected Outputs</h2>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Script</th>
+<th>Key outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>02</td>
+<td><code>data/processed/clinical_cleaned.csv</code>,
+<code>outputs/tables/clinical_missingness_summary.csv</code></td>
+</tr>
+<tr class="even">
+<td>03</td>
+<td><code>data/processed/genomics_cleaned.csv</code>,
+<code>outputs/tables/top_mutated_genes.csv</code>,
+<code>mutation_counts_per_patient.csv</code>,
+<code>variant_classification_summary.csv</code></td>
+</tr>
+<tr class="odd">
+<td>04</td>
+<td><code>data/processed/clinical_genomics_merged.csv</code>,
+<code>outputs/tables/id_matching_summary.csv</code></td>
+</tr>
+<tr class="even">
+<td>05</td>
+<td><code>outputs/tables/mutation_burden_summary.csv</code>,
+<code>clinical_genomic_summary.csv</code></td>
+</tr>
+<tr class="odd">
+<td>06</td>
+<td><code>outputs/figures/*.png</code> (top genes, variant distribution,
+mutation counts, clinical grouping)</td>
+</tr>
+<tr class="even">
+<td>07</td>
+<td><code>data/processed/ml_feature_table.csv</code></td>
+</tr>
+<tr class="odd">
+<td>08</td>
+<td><code>outputs/tables/model_performance_summary.csv</code>,
+<code>feature_importance.csv</code>,
+<code>outputs/figures/confusion_matrix.png</code>,
+<code>roc_curve.png</code>,
+<code>outputs/models/baseline_model.rds</code></td>
+</tr>
+<tr class="even">
+<td>LUAD test</td>
+<td><code>outputs/reports/luad_generalizability_test_log.csv</code>,
+<code>luad_generalizability_report.md</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="limitations" class="section level2">
+<h2>Limitations</h2>
+<ul>
+<li><strong>No strong native clinical endpoint</strong>:
+<code>survival_status</code> showed near-chance predictive power (AUC
+~0.556); <code>relapse_status</code> and <code>treatment_response</code>
+were too sparse to model. An exploratory <code>risk_group</code>
+endpoint (mutation-burden median split) was used instead — see
+<code>outputs/reports/data_overview.md</code>.</li>
+<li><strong>Follow-up time data gap</strong>:
+<code>days_to_last_follow_up</code> is populated for only ~0.1% of BRCA
+patients via the standard clinical query — a known GDC API limitation,
+documented in <code>outputs/reports/data_overview.md</code>.</li>
+<li><strong>Dockerfile untested</strong>: a first attempt only, not yet
+built/run.</li>
+<li><strong>No <code>--config</code> CLI flag</strong>: scripts read
+<code>config/config.yaml</code> via a fixed path.</li>
+<li><strong>Nextflow orchestration is sequential only</strong>, and
+requires WSL2 on Windows (Nextflow doesn’t run natively on Windows) —
+see <code>workflow/nextflow/README_nextflow.md</code>.</li>
+<li><strong>Generalizability tested on LUAD only</strong> (not yet
+extended to LAML).</li>
+</ul>
 </div>
 <div id="prerequisites-windows" class="section level2">
 <h2>Prerequisites (Windows)</h2>

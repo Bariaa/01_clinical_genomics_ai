@@ -1,4 +1,4 @@
-# 01_clinical_genomics_ai
+# # Clinical Genomics AI: TCGA Multi-Cancer Pipeline Generalizability Study
 
 Clinical genomics AI pipeline: data preparation, cohort matching, feature
 engineering, and baseline modeling across TCGA datasets, with a secondary
@@ -47,6 +47,79 @@ Full justification is documented in `outputs/reports/dataset_selection_report.md
 │ └── environment.yml
 ├── renv.lock # generated after running renv::init()
 └── README.md
+
+## Input Data Requirements
+
+This pipeline requires raw TCGA data to be downloaded before running any
+processing scripts:
+- **Clinical data**: `data/raw/<DATASET>/<DATASET>_clinical.rds` (via `TCGAbiolinks::GDCquery_clinic()`)
+- **Mutation data (MAF)**: `data/raw/<DATASET>/<DATASET>_maf.rds` (via `TCGAbiolinks::GDCquery()` + `GDCdownload()`)
+
+Downloads require an internet connection and, on Windows, the standalone
+[GDC Data Transfer Tool](https://gdc.cancer.gov/access-data/gdc-data-transfer-tool)
+for reliable large-file downloads (`method = "client"` in `GDCdownload()`).
+Raw data is not committed to this repository — each user must download it
+independently (see `.gitignore`).
+
+## Installation Instructions
+
+1. Install [R](https://cran.r-project.org/) (4.3+) and [RStudio](https://posit.co/download/rstudio-desktop/)
+2. Clone this repository
+3. Open `01_clinical_genomics_ai.Rproj` in RStudio
+4. Install `renv` and restore the locked package environment (see Setup below)
+5. On Windows, install [Rtools](https://cran.rstudio.com/bin/windows/Rtools/) (see Prerequisites below)
+
+## Conda Setup Instructions
+
+An alternate conda-based environment is provided in `environment/environment.yml`,
+useful when R needs to run via conda (e.g. on a shared cluster) rather than a
+system R install:
+```bash
+conda env create -f environment/environment.yml
+conda activate clinical-genomics-ai
+```
+**Note:** `renv` (see Setup below) is the primary reproducibility method for
+this project; the conda environment is a secondary option.
+
+## Docker Setup Instructions
+
+A first-attempt `environment/Dockerfile` is provided for containerising the
+environment:
+```bash
+docker build -t clinical-genomics-ai -f environment/Dockerfile .
+docker run -it clinical-genomics-ai
+```
+**Known limitation:** this Dockerfile has not yet been built or tested (Docker
+was not available in the development environment used for this project) — see
+the note at the top of the Dockerfile itself.
+
+## Expected Outputs
+
+| Script | Key outputs |
+|---|---|
+| 02 | `data/processed/clinical_cleaned.csv`, `outputs/tables/clinical_missingness_summary.csv` |
+| 03 | `data/processed/genomics_cleaned.csv`, `outputs/tables/top_mutated_genes.csv`, `mutation_counts_per_patient.csv`, `variant_classification_summary.csv` |
+| 04 | `data/processed/clinical_genomics_merged.csv`, `outputs/tables/id_matching_summary.csv` |
+| 05 | `outputs/tables/mutation_burden_summary.csv`, `clinical_genomic_summary.csv` |
+| 06 | `outputs/figures/*.png` (top genes, variant distribution, mutation counts, clinical grouping) |
+| 07 | `data/processed/ml_feature_table.csv` |
+| 08 | `outputs/tables/model_performance_summary.csv`, `feature_importance.csv`, `outputs/figures/confusion_matrix.png`, `roc_curve.png`, `outputs/models/baseline_model.rds` |
+| LUAD test | `outputs/reports/luad_generalizability_test_log.csv`, `luad_generalizability_report.md` |
+
+## Limitations
+
+- **No strong native clinical endpoint**: `survival_status` showed near-chance
+  predictive power (AUC ~0.556); `relapse_status` and `treatment_response` were
+  too sparse to model. An exploratory `risk_group` endpoint (mutation-burden
+  median split) was used instead — see `outputs/reports/data_overview.md`.
+- **Follow-up time data gap**: `days_to_last_follow_up` is populated for only
+  ~0.1% of BRCA patients via the standard clinical query — a known GDC API
+  limitation, documented in `outputs/reports/data_overview.md`.
+- **Dockerfile untested**: a first attempt only, not yet built/run.
+- **No `--config` CLI flag**: scripts read `config/config.yaml` via a fixed path.
+- **Nextflow orchestration is sequential only**, and requires WSL2 on Windows
+  (Nextflow doesn't run natively on Windows) — see `workflow/nextflow/README_nextflow.md`.
+- **Generalizability tested on LUAD only** (not yet extended to LAML).
 
 ## Prerequisites (Windows)
 Rtools is required to build some Bioconductor dependencies from source
