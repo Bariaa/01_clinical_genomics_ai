@@ -1,0 +1,31 @@
+Loading required package: ggplot2
+Loading required package: lattice
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Type 'citation("pROC")' for a citation.
+
+Attaching package: ‘pROC’
+
+The following objects are masked from ‘package:stats’:
+
+    cov, smooth, var
+
+Exploratory endpoint: risk_group | n = 1097 | predictors: age, sex, TP53_mutated, PIK3CA_mutated, driver_gene_mutated
+⚠️ XGBoost training failed: Stopping
+There were 50 or more warnings (use warnings() to see the first 50)
+
+=== Model performance summary ===
+
+=== Feature importance (Random Forest) ===
+
+✅ Best model: logistic_regression (ROC-AUC = 0.7198)
+✅ All outputs saved: model_performance_summary.csv, feature_importance.csv, confusion_matrix.png, roc_curve.png, baseline_model.rds

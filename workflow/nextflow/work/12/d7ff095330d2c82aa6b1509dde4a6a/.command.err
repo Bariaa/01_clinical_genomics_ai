@@ -1,0 +1,18 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loaded clinical: 1098 records.
+Loaded genomics: 89568 records.
+Matched patients: 968 (88.16% of clinical cohort)
+Unmatched in clinical (no mutation data): 130
+Unmatched in genomic (no clinical record): 0
+✅ Saved: data/processed/clinical_genomics_merged.csv (89568 rows)
+✅ Saved: outputs/tables/id_matching_summary.csv

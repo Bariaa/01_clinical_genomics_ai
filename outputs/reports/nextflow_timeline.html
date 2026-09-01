@@ -205,17 +205,18 @@ $(function() {
 
   // Nextflow report data
   window.data = {
-    "elapsed": "34m 33s",
-    "beginningMillis": 1788058498582,
-    "endingMillis": 1788060571493,
+    "elapsed": "3m 16s",
+    "beginningMillis": 1788142056468,
+    "endingMillis": 1788142252416,
     "processes": [
-        {"label": "CLEAN_CLINICAL (02_clean_clinical_data)", "cached": false, "index": 0, "times": [{"starting_time": 1788058500311, "ending_time": 1788058500348}, {"starting_time": 1788058500348, "ending_time": 1788058502960, "label": "2.8s \/ 132.1 MB"}, {"starting_time": 1788058502960, "ending_time": 1788058503160}]},
-        {"label": "PROCESS_MUTATIONS (03_process_mutation_data)", "cached": false, "index": 1, "times": [{"starting_time": 1788058503270, "ending_time": 1788058503361}, {"starting_time": 1788058503361, "ending_time": 1788058515575, "label": "12.4s \/ 370.7 MB"}, {"starting_time": 1788058515575, "ending_time": 1788058515652}]},
-        {"label": "MATCH_IDS (04_match_patient_ids)", "cached": false, "index": 2, "times": [{"starting_time": 1788058515712, "ending_time": 1788058515753}, {"starting_time": 1788058515753, "ending_time": 1788058520566, "label": "5s \/ 132 MB"}, {"starting_time": 1788058520566, "ending_time": 1788058520663}]},
-        {"label": "SUMMARY_TABLES (05_generate_summary_tables)", "cached": false, "index": 3, "times": [{"starting_time": 1788058520760, "ending_time": 1788058520863}, {"starting_time": 1788058520863, "ending_time": 1788058524631, "label": "3.9s \/ 155.3 MB"}, {"starting_time": 1788058524631, "ending_time": 1788058524703}]},
-        {"label": "GENERATE_FIGURES (06_generate_figures)", "cached": false, "index": 4, "times": [{"starting_time": 1788058524834, "ending_time": 1788058524909}, {"starting_time": 1788058524909, "ending_time": 1788058529624, "label": "4.9s \/ 223.6 MB"}, {"starting_time": 1788058529624, "ending_time": 1788058529687}]},
-        {"label": "BUILD_FEATURES (07_build_ml_feature_table)", "cached": false, "index": 5, "times": [{"starting_time": 1788058529746, "ending_time": 1788058529788}, {"starting_time": 1788058529788, "ending_time": 1788058534659, "label": "5s \/ 164.7 MB"}, {"starting_time": 1788058534659, "ending_time": 1788058534768}]},
-        {"label": "TRAIN_MODEL (08_train_baseline_model)", "cached": false, "index": 6, "times": [{"starting_time": 1788058534830, "ending_time": 1788058534867}, {"starting_time": 1788058534867, "ending_time": 1788060562757, "label": "33m 48s \/ 1.5 GB"}, {"starting_time": 1788060562757, "ending_time": 1788060563319}]}
+        {"label": "CLEAN_CLINICAL_DATA (02_clean_clinical_data)", "cached": false, "index": 0, "times": [{"starting_time": 1788142059852, "ending_time": 1788142059921}, {"starting_time": 1788142059921, "ending_time": 1788142064069, "label": "4.5s \/ 132.1 MB"}, {"starting_time": 1788142064069, "ending_time": 1788142064401}]},
+        {"label": "PROCESS_MUTATION_DATA (03_process_mutation_data)", "cached": false, "index": 1, "times": [{"starting_time": 1788142064802, "ending_time": 1788142064903}, {"starting_time": 1788142064903, "ending_time": 1788142083469, "label": "19.1s \/ 370.8 MB"}, {"starting_time": 1788142083469, "ending_time": 1788142083859}]},
+        {"label": "MATCH_PATIENT_IDS (04_match_patient_ids)", "cached": false, "index": 2, "times": [{"starting_time": 1788142084013, "ending_time": 1788142084060}, {"starting_time": 1788142084060, "ending_time": 1788142098008, "label": "14.2s \/ 131.8 MB"}, {"starting_time": 1788142098008, "ending_time": 1788142098240}]},
+        {"label": "GENERATE_SUMMARY_TABLES (05_generate_summary_tables)", "cached": false, "index": 3, "times": [{"starting_time": 1788142098344, "ending_time": 1788142098441}, {"starting_time": 1788142098441, "ending_time": 1788142108125, "label": "10.1s \/ 158.5 MB"}, {"starting_time": 1788142108125, "ending_time": 1788142108432}]},
+        {"label": "GENERATE_FIGURES (06_generate_figures)", "cached": false, "index": 4, "times": [{"starting_time": 1788142108600, "ending_time": 1788142108734}, {"starting_time": 1788142108734, "ending_time": 1788142118051, "label": "9.8s \/ 223.7 MB"}, {"starting_time": 1788142118051, "ending_time": 1788142118406}]},
+        {"label": "BUILD_ML_FEATURE_TABLE (07_build_ml_feature_table)", "cached": false, "index": 5, "times": [{"starting_time": 1788142118538, "ending_time": 1788142118607}, {"starting_time": 1788142118607, "ending_time": 1788142124339, "label": "6s \/ 102.8 MB"}, {"starting_time": 1788142124339, "ending_time": 1788142124494}]},
+        {"label": "TRAIN_BASELINE_MODEL (08_train_baseline_model)", "cached": false, "index": 6, "times": [{"starting_time": 1788142124609, "ending_time": 1788142124694}, {"starting_time": 1788142124694, "ending_time": 1788142228758, "label": "1m 44s \/ 463 MB"}, {"starting_time": 1788142228758, "ending_time": 1788142228904}]},
+        {"label": "TEST_SECOND_DATASET (test_luad_generalizability)", "cached": false, "index": 7, "times": [{"starting_time": 1788142229052, "ending_time": 1788142229103}, {"starting_time": 1788142229103, "ending_time": 1788142249875, "label": "21s \/ 401.9 MB"}, {"starting_time": 1788142249875, "ending_time": 1788142250068}]}
     ]
 }
 ;

@@ -1,0 +1,34 @@
+  number_of_clinical_records number_of_genomic_records
+1                       1098                       968
+  number_of_matched_records number_unmatched_in_clinical_data
+1                       968                               130
+  number_unmatched_in_genomic_data percentage_matched
+1                                0              88.16
+    dataset   patient_id                    sample_id    gene chromosome
+1 TCGA-BRCA TCGA-A8-A09E TCGA-A8-A09E-01A-11W-A019-09  PDIK1L       chr1
+2 TCGA-BRCA TCGA-A8-A09E TCGA-A8-A09E-01A-11W-A019-09    PIGV       chr1
+3 TCGA-BRCA TCGA-A8-A09E TCGA-A8-A09E-01A-11W-A019-09   VCAM1       chr1
+4 TCGA-BRCA TCGA-A8-A09E TCGA-A8-A09E-01A-11W-A019-09    BCL9       chr1
+5 TCGA-BRCA TCGA-A8-A09E TCGA-A8-A09E-01A-11W-A019-09    FLG2       chr1
+6 TCGA-BRCA TCGA-A8-A09E TCGA-A8-A09E-01A-11W-A019-09 CREB3L4       chr1
+  start_position variant_classification variant_type reference_allele
+1       26122398      Missense_Mutation          SNP                C
+2       26797659      Missense_Mutation          SNP                A
+3      100724635      Missense_Mutation          SNP                A
+4      147620775      Missense_Mutation          SNP                C
+5      152351945                 Silent          SNP                T
+6      153969004                 Silent          SNP                A
+  tumour_allele protein_change sex_at_birth                primary_diagnosis
+1             A        p.L283I       female infiltrating duct carcinoma, nos
+2             T        p.T433S       female infiltrating duct carcinoma, nos
+3             T        p.N225Y       female infiltrating duct carcinoma, nos
+4             G        p.P874A       female infiltrating duct carcinoma, nos
+5             A       p.T1947=       female infiltrating duct carcinoma, nos
+6             G         p.A83=       female infiltrating duct carcinoma, nos
+  vital_status overall_survival_days survival_event
+1        alive                    NA              0
+2        alive                    NA              0
+3        alive                    NA              0
+4        alive                    NA              0
+5        alive                    NA              0
+6        alive                    NA              0

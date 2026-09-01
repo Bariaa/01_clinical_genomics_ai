@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=16398
+%cpu=743
+cpu_model=Intel(R) Core(TM) i5-1035G7 CPU @ 1.20GHz
+rchar=66187027
+wchar=2832
+syscr=4652
+syscw=66
+read_bytes=52703431
+write_bytes=0
+%mem=136
+vmem=640248
+rss=516516
+peak_vmem=640248
+peak_rss=516516
+vol_ctxt=3415
+inv_ctxt=44

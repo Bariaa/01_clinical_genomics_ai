@@ -1,0 +1,14 @@
+    patient_id age    sex mutation_burden TP53_mutated KRAS_mutated
+1 TCGA-A7-A0DC  63 female               0            0            0
+2 TCGA-BH-A0B6  47 female             840            0            0
+3 TCGA-A8-A084  81 female               0            0            0
+4 TCGA-A8-A06U  80 female              63            1            0
+5 TCGA-D8-A146  57 female              35            0            0
+6 TCGA-A8-A09K  68 female              45            0            0
+  PIK3CA_mutated outcome
+1              0   alive
+2              1   alive
+3              0   alive
+4              1    dead
+5              1   alive
+6              0   alive

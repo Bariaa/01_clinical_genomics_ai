@@ -1,47 +1,40 @@
-# Dataset Selection Report
+# Nextflow Pipeline Run Report
 
-## Objective
-Document the rationale for assigning TCGA-BRCA, TCGA-LUAD, and TCGA-LAML to
-primary (development), secondary (validation), and tertiary (stress test) roles
-in evaluating **pipeline** — not model — generalizability.
+## Run summary
+- **Date:** 2026-08-31
+- **Dataset:** TCGA-BRCA (primary)
+- **Command:** `nextflow run main.nf` (from `workflow/nextflow/`)
+- **Result:** ✅ All 8 processes completed successfully
+- **Duration:** 3m 14s
+- **CPU hours:** 0.1
 
-## Rationale
+## Process results
+| Process | Status |
+|---|---|
+| CLEAN_CLINICAL_DATA | ✅ Success |
+| PROCESS_MUTATION_DATA | ✅ Success |
+| MATCH_PATIENT_IDS | ✅ Success |
+| GENERATE_SUMMARY_TABLES | ✅ Success |
+| GENERATE_FIGURES | ✅ Success |
+| BUILD_ML_FEATURE_TABLE | ✅ Success |
+| TRAIN_BASELINE_MODEL | ✅ Success |
+| TEST_SECOND_DATASET | ✅ Success (see `outputs/reports/luad_generalizability_report.md`) |
 
-### Primary dataset: TCGA-BRCA
-Selected as the primary/development dataset due to its size (1088 patients) and
-depth of clinical, histologic, and molecular annotation. Developing the pipeline
-against the most feature-complete cohort first forces early handling of missing
-data, subtype heterogeneity, and multiple biospecimen types, producing a more
-robust pipeline before it is tested elsewhere.
+## Environment
+Run via WSL2 (Ubuntu 24.04), separate Linux R installation (R 4.3.3),
+Java OpenJDK 21, Nextflow 26.04.6.
 
-### Secondary dataset: TCGA-LUAD
-Selected as the secondary/validation dataset because it is structurally similar
-to BRCA — both are solid tumors with comparable staging and histology frameworks —
-while remaining an independent cohort from a different organ system. This tests
-generalizability across organ systems without confounding the result with a
-fundamentally different data schema.
+## Known limitations
+1. Raw data download (GDC/`gdc-client`) is not wrapped as a Nextflow
+   process — performed manually beforehand due to long runtimes and
+   intermittent server timeouts requiring manual retry.
+2. `TEST_SECOND_DATASET` independently re-derives LUAD's cleaned tables
+   rather than reusing prior process outputs via Nextflow channels —
+   scripts still use fixed project-relative I/O rather than typed channel
+   artifacts (see README_nextflow.md design notes).
+3. Execution is fully sequential; no parallelization implemented yet.
 
-### Tertiary dataset: TCGA-LAML
-Selected as a stress test rather than a standard validation set. As a hematologic
-malignancy, LAML lacks solid-tumor fields (staging, laterality, histologic subtype)
-entirely. Applying the unmodified pipeline here tests whether it fails gracefully
-(clear errors/flags) or silently (incorrect output without warning) when its
-structural assumptions do not hold — a more rigorous test of true robustness than
-same-structure validation alone.
-
-## Explicit Non-Goals
-- This design does **not** test statistical/predictive model generalizability.
-- LAML results are not expected to "pass" in the same sense as LUAD; failure here
-  is informative, not disqualifying, provided it is a controlled/logged failure.
-
-## Decision Log
-
-| Date | Decision | Rationale |
-|---|---|---|
-| 2026-08-10 | BRCA set as primary | Largest, most annotated cohort |
-| 2026-08-10 | LUAD set as secondary | Structurally comparable solid tumor, independent cohort |
-| 2026-08-10 | LAML set as stress test | Structurally distinct; tests failure-mode robustness |
-
-## References
-- Weinstein JN, et al. The Cancer Genome Atlas Pan-Cancer analysis project. Nat Genet. 2013.
-- TRIPOD / STROBE reporting guidelines (adapted for pipeline-focused, not model-focused, reporting).
+## Detailed execution metrics
+See `outputs/reports/nextflow_report.html` and
+`outputs/reports/nextflow_timeline.html` for full per-process resource
+usage and timing.

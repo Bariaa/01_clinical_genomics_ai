@@ -1,0 +1,405 @@
+    dataset   patient_id   project submitter_id na morphology created_datetime
+1 TCGA-BRCA TCGA-A7-A0DC TCGA-BRCA TCGA-A7-A0DC NA     8500/3             <NA>
+2 TCGA-BRCA TCGA-BH-A0B6 TCGA-BRCA TCGA-BH-A0B6 NA     8500/3             <NA>
+3 TCGA-BRCA TCGA-A8-A084 TCGA-BRCA TCGA-A8-A084 NA     8500/3             <NA>
+4 TCGA-BRCA TCGA-A8-A06U TCGA-BRCA TCGA-A8-A06U NA     8500/3             <NA>
+5 TCGA-BRCA TCGA-D8-A146 TCGA-BRCA TCGA-D8-A146 NA     8500/3             <NA>
+6 TCGA-BRCA TCGA-A8-A09K TCGA-BRCA TCGA-A8-A09K NA     8500/3             <NA>
+  tissue_or_organ_of_origin age_at_diagnosis                primary_diagnosis
+1               Breast, NOS            23294 infiltrating duct carcinoma, nos
+2               Breast, NOS            17346 infiltrating duct carcinoma, nos
+3               Breast, NOS            29858 infiltrating duct carcinoma, nos
+4               Breast, NOS            29525 infiltrating duct carcinoma, nos
+5               Breast, NOS            20861 infiltrating duct carcinoma, nos
+6               Breast, NOS            24960 infiltrating duct carcinoma, nos
+  classification_of_tumor                 updated_datetime
+1            not reported 2025-01-08T12:58:05.350809-06:00
+2                 primary 2025-12-06T10:18:30.932165-06:00
+3                 primary 2025-12-06T11:26:29.694105-06:00
+4                 primary 2025-12-06T10:01:50.035441-06:00
+5                 primary 2025-12-06T11:41:02.414558-06:00
+6                 primary 2025-12-06T12:59:07.761279-06:00
+                          diagnosis_id site_of_resection_or_biopsy    state
+1 bfd786ee-b81c-5eb5-9da8-44e35c29baf9                 Breast, NOS released
+2 aedb96c5-99f0-5db2-8223-6a71050e9d9a                 Breast, NOS released
+3 06807abd-2113-5ef1-a1d7-9685f7457432                 Breast, NOS released
+4 2774667f-ef98-5f5c-91ea-d9aecc62c7d2                 Breast, NOS released
+5 7491803e-023c-5e55-85c3-77a79b28e86e                 Breast, NOS released
+6 97c4714e-0498-563c-a089-e1039244a85e                 Breast, NOS released
+  diagnosis_is_primary_disease synchronous_malignancy ajcc_pathologic_stage
+1                           NA                     No              Stage IA
+2                         TRUE                     No               Stage I
+3                         TRUE                     No             Stage IIB
+4                         TRUE                     No             Stage IIB
+5                         TRUE                     No             Stage IIA
+6                         TRUE                     No             Stage IIA
+  days_to_diagnosis laterality last_known_disease_status days_to_last_follow_up
+1                 0       <NA>              not reported                    906
+2                 0       Left                      <NA>                     NA
+3                 0       Left                      <NA>                     NA
+4                 0      Right                      <NA>                     NA
+5                 0      Right                      <NA>                     NA
+6                 0       Left                      <NA>                     NA
+  prior_malignancy year_of_diagnosis prior_treatment
+1               no              2009              No
+2              yes              2006             Yes
+3              yes              2007             Yes
+4              yes              2008              No
+5              yes              2010             Yes
+6              yes              2008             Yes
+  days_to_last_known_disease_status ajcc_staging_system_edition
+1                                NA                        <NA>
+2                                NA                         6th
+3                                NA                         5th
+4                                NA                         6th
+5                                NA                         7th
+6                                NA                         6th
+  ajcc_pathologic_t days_to_recurrence ajcc_pathologic_n ajcc_pathologic_m
+1               T1c                 NA           N0 (i-)                M0
+2               T1c                 NA                N0                M0
+3                T2                 NA               N1a                M0
+4                T2                 NA               N1a                M0
+5                T2                 NA                N0                MX
+6               T1c                 NA                N1                M0
+  icd_10_code  tumor_grade                   sites_of_involvement
+1       C50.9 Not Reported                                       
+2       C50.9         <NA>               Breast, Left Upper Outer
+3       C50.9         <NA>                            Breast, NOS
+4       C50.9         <NA>              Breast, Right Upper Outer
+5       C50.9         <NA> Breast, Right Upper Outer; Breast, NOS
+6       C50.9         <NA>               Breast, Left Lower Outer
+  progression_or_recurrence    method_of_diagnosis metastasis_at_diagnosis
+1              not reported                   <NA>                    <NA>
+2                      <NA> Fine Needle Aspiration           No Metastasis
+3                      <NA>                   <NA>                    <NA>
+4                      <NA>                   <NA>                    <NA>
+5                      <NA> Fine Needle Aspiration           No Metastasis
+6                      <NA>                   <NA>                    <NA>
+  tumor_of_origin figo_stage figo_staging_edition_year cigarettes_per_day
+1            <NA>       <NA>                      <NA>                 NA
+2            <NA>       <NA>                      <NA>                 NA
+3            <NA>       <NA>                      <NA>                 NA
+4            <NA>       <NA>                      <NA>                 NA
+5            <NA>       <NA>                      <NA>                 NA
+6            <NA>       <NA>                      <NA>                 NA
+  alcohol_history                          exposure_id alcohol_intensity
+1    Not Reported cf0e2785-4dc2-5f31-9a68-d462e5295cdd                NA
+2            <NA>                                 <NA>                NA
+3            <NA>                                 <NA>                NA
+4            <NA>                                 <NA>                NA
+5            <NA>                                 <NA>                NA
+6            <NA>                                 <NA>                NA
+          race              ethnicity vital_status age_at_index days_to_birth
+1        white not hispanic or latino        alive           63        -23294
+2        white not hispanic or latino        alive           47        -17346
+3 not reported           not reported        alive           81        -29858
+4 not reported           not reported         dead           80        -29525
+5        white not hispanic or latino        alive           57        -20861
+6 not reported           not reported        alive           68        -24960
+  year_of_birth                       demographic_id age_is_obfuscated
+1          1946 e4fddcc5-5609-591a-9ffb-835b28d3d7ac                NA
+2            NA 99b69752-1c5f-52bc-9b23-7c28f87374be             FALSE
+3            NA 39a4ee32-d4bb-5ee0-9a20-d10bc4d4f327             FALSE
+4            NA 239c4112-9b2b-5007-839a-a30c46d2f56d             FALSE
+5            NA 721700ad-b421-5eee-bb71-89e25299710e             FALSE
+6            NA 17a2ef09-44e2-5dbf-a363-8b595f727528             FALSE
+  sex_at_birth year_of_death country_of_residence_at_enrollment days_to_death
+1       female            NA                               <NA>            NA
+2       female            NA                               <NA>            NA
+3       female            NA                            Germany            NA
+4       female            NA                            Germany           883
+5       female            NA                             Poland            NA
+6       female            NA                            Germany            NA
+  treatments_pharmaceutical_days_to_treatment_end
+1                                              NA
+2                                              NA
+3                                              NA
+4                                              NA
+5                                              NA
+6                                              NA
+  treatments_pharmaceutical_days_to_treatment_start
+1                                                NA
+2                                                NA
+3                                                NA
+4                                                NA
+5                                                NA
+6                                                NA
+  treatments_pharmaceutical_treatment_id
+1   4c866bf4-0a1e-53d1-aee6-6716e4da409e
+2   bd6b6694-de50-444a-aec6-5aa2301aadda
+3   9f346ddd-ad6a-4c12-b132-33f6579d5c77
+4   b27960b8-8877-5986-bbcc-231b51982806
+5   581bb6dd-a46b-55d3-ae18-669ce720ddc9
+6   a72cc03c-9173-5e5f-8b76-cb783f65e630
+  treatments_pharmaceutical_treatment_type
+1              Pharmaceutical Therapy, NOS
+2              Pharmaceutical Therapy, NOS
+3              Pharmaceutical Therapy, NOS
+4              Pharmaceutical Therapy, NOS
+5              Pharmaceutical Therapy, NOS
+6              Pharmaceutical Therapy, NOS
+  treatments_pharmaceutical_regimen_or_line_of_therapy
+1                                                   NA
+2                                                   NA
+3                                                   NA
+4                                                   NA
+5                                                   NA
+6                                                   NA
+  treatments_pharmaceutical_treatment_effect
+1                                         NA
+2                                         NA
+3                                         NA
+4                                         NA
+5                                         NA
+6                                         NA
+  treatments_pharmaceutical_therapeutic_agents
+1                                           NA
+2                                           NA
+3                                           NA
+4                                           NA
+5                                           NA
+6                                           NA
+  treatments_pharmaceutical_treatment_or_therapy
+1                                            yes
+2                                             no
+3                                             no
+4                                        unknown
+5                                            yes
+6                                             no
+  treatments_pharmaceutical_initial_disease_status
+1                                               NA
+2                                               NA
+3                                               NA
+4                                               NA
+5                                               NA
+6                                               NA
+  treatments_pharmaceutical_treatment_intent_type
+1                                              NA
+2                                        Adjuvant
+3                                        Adjuvant
+4                                        Adjuvant
+5                                        Adjuvant
+6                                        Adjuvant
+  treatments_pharmaceutical_treatment_outcome
+1                                          NA
+2                                          NA
+3                                          NA
+4                                          NA
+5                                Not Reported
+6                                          NA
+  treatments_pharmaceutical_clinical_trial_indicator
+1                                                 NA
+2                                                 NA
+3                                                 NA
+4                                                 NA
+5                                                 NA
+6                                                 NA
+  treatments_pharmaceutical_treatment_anatomic_sites
+1                                               NULL
+2                                               NULL
+3                                               NULL
+4                                               NULL
+5                                               NULL
+6                                               NULL
+  treatments_pharmaceutical_margin_status
+1                                      NA
+2                                      NA
+3                                      NA
+4                                      NA
+5                                      NA
+6                                      NA
+  treatments_pharmaceutical_course_number
+1                                      NA
+2                                      NA
+3                                      NA
+4                                      NA
+5                                      NA
+6                                      NA
+  treatments_pharmaceutical_treatment_dose
+1                                       NA
+2                                       NA
+3                                       NA
+4                                       NA
+5                                       NA
+6                                       NA
+  treatments_pharmaceutical_number_of_fractions
+1                                            NA
+2                                            NA
+3                                            NA
+4                                            NA
+5                                            NA
+6                                            NA
+  treatments_pharmaceutical_treatment_dose_units
+1                                             NA
+2                                             NA
+3                                             NA
+4                                             NA
+5                                             NA
+6                                             NA
+  treatments_pharmaceutical_prescribed_dose_units
+1                                              NA
+2                                              NA
+3                                              NA
+4                                              NA
+5                                              NA
+6                                              NA
+  treatments_pharmaceutical_route_of_administration
+1                                              NULL
+2                                              NULL
+3                                              NULL
+4                                              NULL
+5                                              NULL
+6                                              NULL
+  treatments_pharmaceutical_prescribed_dose
+1                                        NA
+2                                        NA
+3                                        NA
+4                                        NA
+5                                        NA
+6                                        NA
+  treatments_pharmaceutical_number_of_cycles
+1                                         NA
+2                                         NA
+3                                         NA
+4                                         NA
+5                                         NA
+6                                         NA
+  treatments_radiation_days_to_treatment_end
+1                                         NA
+2                                        143
+3                                         NA
+4                                         NA
+5                                         NA
+6                                         NA
+  treatments_radiation_days_to_treatment_start
+1                                           NA
+2                                           94
+3                                           NA
+4                                           NA
+5                                           NA
+6                                           NA
+     treatments_radiation_treatment_id treatments_radiation_treatment_type
+1 747d663f-737d-5abf-a40a-ed5ea2656f17              Radiation Therapy, NOS
+2 ca6c4a30-8d9a-56c0-9be4-abda2d49000e            Radiation, External Beam
+3 08320495-a920-5ed5-a813-af359ec2a50c            Radiation, External Beam
+4 e17f86df-f52c-4123-8184-cca4ad8e6578              Radiation Therapy, NOS
+5 9ce61a90-8852-4d66-867f-c9e0d30adbda              Radiation Therapy, NOS
+6 7bb6034b-1b26-4f86-9290-2dd1eb4e5ab1              Radiation Therapy, NOS
+  treatments_radiation_regimen_or_line_of_therapy
+1                                              NA
+2                                              NA
+3                                              NA
+4                                              NA
+5                                              NA
+6                                              NA
+  treatments_radiation_treatment_effect treatments_radiation_therapeutic_agents
+1                                    NA                                      NA
+2                                    NA                                      NA
+3                                    NA                                      NA
+4                                    NA                                      NA
+5                                    NA                                      NA
+6                                    NA                                      NA
+  treatments_radiation_treatment_or_therapy
+1                                       yes
+2                                       yes
+3                                       yes
+4                                        no
+5                                        no
+6                                        no
+  treatments_radiation_initial_disease_status
+1                                          NA
+2                                          NA
+3                                          NA
+4                                          NA
+5                                          NA
+6                                          NA
+  treatments_radiation_treatment_intent_type
+1                                         NA
+2                                         NA
+3                                         NA
+4                                   Adjuvant
+5                                   Adjuvant
+6                                   Adjuvant
+  treatments_radiation_treatment_outcome
+1                                     NA
+2                      Complete Response
+3                                Unknown
+4                                     NA
+5                                     NA
+6                                     NA
+  treatments_radiation_clinical_trial_indicator
+1                                            NA
+2                                            NA
+3                                            NA
+4                                            NA
+5                                            NA
+6                                            NA
+  treatments_radiation_treatment_anatomic_sites
+1                                          NULL
+2                           Primary Tumor Field
+3                           Primary Tumor Field
+4                                          NULL
+5                                          NULL
+6                                          NULL
+  treatments_radiation_margin_status treatments_radiation_course_number
+1                                 NA                                 NA
+2                                 NA                                 NA
+3                                 NA                                 NA
+4                                 NA                                 NA
+5                                 NA                                 NA
+6                                 NA                                 NA
+  treatments_radiation_treatment_dose treatments_radiation_number_of_fractions
+1                                  NA                                       NA
+2                                6640                                       36
+3                                  NA                                       NA
+4                                  NA                                       NA
+5                                  NA                                       NA
+6                                  NA                                       NA
+  treatments_radiation_treatment_dose_units
+1                                        NA
+2                                       cGy
+3                                        NA
+4                                        NA
+5                                        NA
+6                                        NA
+  treatments_radiation_prescribed_dose_units
+1                                         NA
+2                                         NA
+3                                         NA
+4                                         NA
+5                                         NA
+6                                         NA
+  treatments_radiation_route_of_administration
+1                                         NULL
+2                                         NULL
+3                                         NULL
+4                                         NULL
+5                                         NULL
+6                                         NULL
+  treatments_radiation_prescribed_dose treatments_radiation_number_of_cycles
+1                                   NA                                    NA
+2                                   NA                                    NA
+3                                   NA                                    NA
+4                                   NA                                    NA
+5                                   NA                                    NA
+6                                   NA                                    NA
+  bcr_patient_barcode overall_survival_days survival_event
+1        TCGA-A7-A0DC                   906              0
+2        TCGA-BH-A0B6                    NA              0
+3        TCGA-A8-A084                    NA              0
+4        TCGA-A8-A06U                   883              1
+5        TCGA-D8-A146                    NA              0
+6        TCGA-A8-A09K                    NA              0
+# A tibble: 10 × 2
+   column                            pct_missing
+   <chr>                                   <dbl>
+ 1 na                                          1
+ 2 created_datetime                            1
+ 3 days_to_last_known_disease_status           1
+ 4 days_to_recurrence                          1
+ 5 tumor_of_origin                             1
+ 6 figo_stage                                  1
+ 7 figo_staging_edition_year                   1
+ 8 cigarettes_per_day                          1
+ 9 alcohol_intensity                           1
+10 year_of_death                               1

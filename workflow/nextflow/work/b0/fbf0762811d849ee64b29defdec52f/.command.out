@@ -1,0 +1,43 @@
+# A tibble: 10 × 3
+   gene   mutated_samples total_mutations
+   <chr>            <int>           <int>
+ 1 TP53               332             349
+ 2 PIK3CA             331             379
+ 3 TTN                206             368
+ 4 CDH1               131             137
+ 5 GATA3              127             129
+ 6 MUC16              127             169
+ 7 KMT2C               88             100
+ 8 MAP3K1              85             127
+ 9 RYR2                79             101
+10 HMCN1               69              89
+     patient_id mutation_count
+1  TCGA-AN-A046           5978
+2  TCGA-AC-A23H           5064
+3  TCGA-BH-A18G           1528
+4  TCGA-AN-A0AK           1452
+5  TCGA-A8-A09Z           1380
+6  TCGA-5L-AAT1           1290
+7  TCGA-BH-A0HF           1171
+8  TCGA-D8-A1XK           1145
+9  TCGA-AO-A128           1038
+10 TCGA-D8-A1XQ            970
+   variant_classification n_mutations
+1       Missense_Mutation       56027
+2                  Silent       19730
+3       Nonsense_Mutation        4942
+4         Frame_Shift_Del        3291
+5             Splice_Site        1539
+6         Frame_Shift_Ins         928
+7                  Intron         737
+8            In_Frame_Del         624
+9           Splice_Region         524
+10                    RNA         447
+11                  3'UTR         206
+12                5'Flank         136
+13                  5'UTR         132
+14                3'Flank         109
+15       Nonstop_Mutation          79
+16 Translation_Start_Site          71
+17           In_Frame_Ins          45
+18                    IGR           1
