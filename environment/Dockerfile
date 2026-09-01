@@ -1,3 +1,8 @@
+# NOTE: This is a first attempt at containerising the environment. It has
+# not yet been built/tested (Docker was not available in the development
+# environment used for this project). See README/docs for known limitations.
+
+
 FROM rocker/r-ver:4.3.0
 
 # Install system dependencies needed by TCGAbiolinks, maftools, and other
