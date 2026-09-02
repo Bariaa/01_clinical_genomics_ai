@@ -1,117 +1,117 @@
-Aug-31 06:07:31.330 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
-Aug-31 06:07:31.669 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 26.04.6
-Aug-31 06:07:31.734 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bak1987/.nextflow/plugins; core-plugins: nf-amazon@3.9.2,nf-azure@1.22.6,nf-cloudcache@0.6.0,nf-codecommit@0.5.3,nf-console@1.3.0,nf-google@1.27.3,nf-k8s@1.5.4,nf-seqera@0.21.1,nf-tower@1.28.2,nf-wave@1.21.0
-Aug-31 06:07:31.810 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Aug-31 06:07:31.822 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Aug-31 06:07:31.832 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.14.1 in 'deployment' mode
-Aug-31 06:07:31.898 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
-Aug-31 06:07:33.588 [main] DEBUG nextflow.plugin.PluginUpdater - Using plugin repository: HttpPluginRepository [registry]; url=https://registry.nextflow.io/api
-Aug-31 06:07:33.636 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Aug-31 06:07:33.720 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/nextflow.config
-Aug-31 06:07:33.732 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/nextflow.config
-Aug-31 06:07:33.746 [main] DEBUG nextflow.config.ConfigParserFactory - Using config parser v2
-Aug-31 06:07:33.797 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
-Aug-31 06:07:35.118 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Aug-31 06:07:35.124 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Aug-31 06:07:35.198 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bak1987/.nextflow/secrets/store.json
-Aug-31 06:07:35.211 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@fd53053] - activable => nextflow.secret.LocalSecretsProvider@fd53053
-Aug-31 06:07:35.257 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [jovial_kowalevski] - revision: c2be33dd67
-Aug-31 06:07:35.594 [main] DEBUG nextflow.Session - Session UUID: ed698559-9e6b-47a3-8fa3-66256d9b5845
-Aug-31 06:07:35.596 [main] DEBUG nextflow.Session - Run name: jovial_kowalevski
-Aug-31 06:07:35.600 [main] DEBUG nextflow.Session - Executor pool size: 8
-Aug-31 06:07:35.624 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Aug-31 06:07:35.648 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Aug-31 06:07:35.713 [main] DEBUG nextflow.cli.CmdRun - 
+Sep-01 06:02:04.983 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
+Sep-01 06:02:05.285 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 26.04.6
+Sep-01 06:02:05.339 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bak1987/.nextflow/plugins; core-plugins: nf-amazon@3.9.2,nf-azure@1.22.6,nf-cloudcache@0.6.0,nf-codecommit@0.5.3,nf-console@1.3.0,nf-google@1.27.3,nf-k8s@1.5.4,nf-seqera@0.21.1,nf-tower@1.28.2,nf-wave@1.21.0
+Sep-01 06:02:05.452 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-01 06:02:05.468 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-01 06:02:05.477 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.14.1 in 'deployment' mode
+Sep-01 06:02:05.669 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Sep-01 06:02:07.299 [main] DEBUG nextflow.plugin.PluginUpdater - Using plugin repository: HttpPluginRepository [registry]; url=https://registry.nextflow.io/api
+Sep-01 06:02:07.341 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-01 06:02:07.435 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/nextflow.config
+Sep-01 06:02:07.441 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/nextflow.config
+Sep-01 06:02:07.451 [main] DEBUG nextflow.config.ConfigParserFactory - Using config parser v2
+Sep-01 06:02:07.480 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Sep-01 06:02:08.431 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-01 06:02:08.436 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-01 06:02:08.459 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bak1987/.nextflow/secrets/store.json
+Sep-01 06:02:08.465 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@fd53053] - activable => nextflow.secret.LocalSecretsProvider@fd53053
+Sep-01 06:02:08.494 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [cranky_wegener] - revision: 78846b998e
+Sep-01 06:02:08.667 [main] DEBUG nextflow.Session - Session UUID: 724de31b-b434-43b7-94e3-70c9956dc0f2
+Sep-01 06:02:08.669 [main] DEBUG nextflow.Session - Run name: cranky_wegener
+Sep-01 06:02:08.674 [main] DEBUG nextflow.Session - Executor pool size: 8
+Sep-01 06:02:08.690 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-01 06:02:08.703 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-01 06:02:08.773 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 26.04.6 build 12646
   Created: 09-07-2026 18:49 UTC (22:49 GDT)
   System: Linux 6.18.33.2-microsoft-standard-WSL2
   Runtime: Groovy 4.0.31 on OpenJDK 64-Bit Server VM 21.0.12+8-1-24.04-Ubuntu
   Encoding: UTF-8 (UTF-8)
-  Process: 314865@DESKTOP-QFN78H1 [127.0.1.1]
-  CPUs: 8 - Mem: 3.6 GB (2.7 GB) - Swap: 1 GB (1023.8 MB)
-Aug-31 06:07:35.850 [main] DEBUG nextflow.Session - Work-dir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work [v9fs]
-Aug-31 06:07:35.854 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/bin
-Aug-31 06:07:35.877 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Aug-31 06:07:35.904 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Aug-31 06:07:35.912 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
-Aug-31 06:07:36.036 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Aug-31 06:07:36.065 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
-Aug-31 06:07:36.441 [main] DEBUG nextflow.Session - Session start
-Aug-31 06:07:36.475 [main] DEBUG nextflow.script.ScriptLoaderFactory - Using script parser v2
-Aug-31 06:07:37.613 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Aug-31 06:07:37.916 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:37.919 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:37.952 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Aug-31 06:07:37.978 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=3.6 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
-Aug-31 06:07:37.989 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
-Aug-31 06:07:38.172 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CLEAN_CLINICAL_DATA': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.377 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:38.380 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:38.385 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'PROCESS_MUTATION_DATA': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.409 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:38.412 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:38.417 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MATCH_PATIENT_IDS': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.430 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:38.432 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:38.437 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'GENERATE_SUMMARY_TABLES': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.451 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:38.454 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:38.460 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'GENERATE_FIGURES': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.477 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:38.479 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:38.484 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'BUILD_ML_FEATURE_TABLE': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.503 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:38.506 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:38.512 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRAIN_BASELINE_MODEL': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.526 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
-Aug-31 06:07:38.529 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Aug-31 06:07:38.535 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TEST_SECOND_DATASET': maxForks=0; fair=false; array=0
-Aug-31 06:07:38.551 [main] DEBUG nextflow.Session - Process names: GENERATE_FIGURES, CLEAN_CLINICAL_DATA, TEST_SECOND_DATASET, MATCH_PATIENT_IDS, TRAIN_BASELINE_MODEL, PROCESS_MUTATION_DATA, GENERATE_SUMMARY_TABLES, BUILD_ML_FEATURE_TABLE
-Aug-31 06:07:38.561 [main] DEBUG nextflow.Session - Igniting dataflow network (8)
-Aug-31 06:07:38.565 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CLEAN_CLINICAL_DATA
-Aug-31 06:07:38.571 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PROCESS_MUTATION_DATA
-Aug-31 06:07:38.576 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MATCH_PATIENT_IDS
-Aug-31 06:07:38.580 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > GENERATE_SUMMARY_TABLES
-Aug-31 06:07:38.583 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > GENERATE_FIGURES
-Aug-31 06:07:38.589 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BUILD_ML_FEATURE_TABLE
-Aug-31 06:07:38.593 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRAIN_BASELINE_MODEL
-Aug-31 06:07:38.597 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TEST_SECOND_DATASET
-Aug-31 06:07:38.602 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Process: 351307@DESKTOP-QFN78H1 [127.0.1.1]
+  CPUs: 8 - Mem: 3.6 GB (2.6 GB) - Swap: 1 GB (1023.8 MB)
+Sep-01 06:02:08.920 [main] DEBUG nextflow.Session - Work-dir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work [v9fs]
+Sep-01 06:02:08.925 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/bin
+Sep-01 06:02:08.958 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-01 06:02:08.981 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Sep-01 06:02:08.985 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+Sep-01 06:02:09.064 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-01 06:02:09.080 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Sep-01 06:02:09.377 [main] DEBUG nextflow.Session - Session start
+Sep-01 06:02:09.402 [main] DEBUG nextflow.script.ScriptLoaderFactory - Using script parser v2
+Sep-01 06:02:10.122 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-01 06:02:12.053 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.054 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.071 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-01 06:02:12.087 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=3.6 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Sep-01 06:02:12.092 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-01 06:02:12.168 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CLEAN_CLINICAL_DATA': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.269 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.271 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.273 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'PROCESS_MUTATION_DATA': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.283 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.284 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.286 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MATCH_PATIENT_IDS': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.293 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.294 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.297 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'GENERATE_SUMMARY_TABLES': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.304 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.305 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.307 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'GENERATE_FIGURES': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.316 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.318 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.320 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'BUILD_ML_FEATURE_TABLE': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.331 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.333 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.336 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRAIN_BASELINE_MODEL': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.346 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Sep-01 06:02:12.348 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-01 06:02:12.350 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TEST_SECOND_DATASET': maxForks=0; fair=false; array=0
+Sep-01 06:02:12.361 [main] DEBUG nextflow.Session - Process names: GENERATE_FIGURES, CLEAN_CLINICAL_DATA, TEST_SECOND_DATASET, MATCH_PATIENT_IDS, TRAIN_BASELINE_MODEL, PROCESS_MUTATION_DATA, GENERATE_SUMMARY_TABLES, BUILD_ML_FEATURE_TABLE
+Sep-01 06:02:12.366 [main] DEBUG nextflow.Session - Igniting dataflow network (8)
+Sep-01 06:02:12.369 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CLEAN_CLINICAL_DATA
+Sep-01 06:02:12.374 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PROCESS_MUTATION_DATA
+Sep-01 06:02:12.377 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MATCH_PATIENT_IDS
+Sep-01 06:02:12.379 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > GENERATE_SUMMARY_TABLES
+Sep-01 06:02:12.381 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > GENERATE_FIGURES
+Sep-01 06:02:12.383 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BUILD_ML_FEATURE_TABLE
+Sep-01 06:02:12.387 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRAIN_BASELINE_MODEL
+Sep-01 06:02:12.390 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TEST_SECOND_DATASET
+Sep-01 06:02:12.407 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
   Main: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/main.nf
-Aug-31 06:07:38.604 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Aug-31 06:07:38.607 [main] DEBUG nextflow.Session - Session await
-Aug-31 06:07:39.843 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:07:39.853 [Task submitter] INFO  nextflow.Session - [1e/6ebd9e] Submitted process > CLEAN_CLINICAL_DATA (02_clean_clinical_data)
-Aug-31 06:07:44.417 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: CLEAN_CLINICAL_DATA (02_clean_clinical_data); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/1e/6ebd9eab0248830781d07d52be25bb]
-Aug-31 06:07:44.424 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Aug-31 06:07:44.798 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:07:44.803 [Task submitter] INFO  nextflow.Session - [b0/fbf076] Submitted process > PROCESS_MUTATION_DATA (03_process_mutation_data)
-Aug-31 06:08:03.860 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: PROCESS_MUTATION_DATA (03_process_mutation_data); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/b0/fbf0762811d849ee64b29defdec52f]
-Aug-31 06:08:04.010 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:08:04.013 [Task submitter] INFO  nextflow.Session - [0e/0599d3] Submitted process > MATCH_PATIENT_IDS (04_match_patient_ids)
-Aug-31 06:08:18.241 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: MATCH_PATIENT_IDS (04_match_patient_ids); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/0e/0599d3d7bb6bae02c2871f5953f8ca]
-Aug-31 06:08:18.342 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:08:18.344 [Task submitter] INFO  nextflow.Session - [54/2672e3] Submitted process > GENERATE_SUMMARY_TABLES (05_generate_summary_tables)
-Aug-31 06:08:28.433 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: GENERATE_SUMMARY_TABLES (05_generate_summary_tables); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/54/2672e30a9b0f224eb0684d7cd8c78e]
-Aug-31 06:08:28.596 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:08:28.601 [Task submitter] INFO  nextflow.Session - [c2/af9f25] Submitted process > GENERATE_FIGURES (06_generate_figures)
-Aug-31 06:08:38.408 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: GENERATE_FIGURES (06_generate_figures); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/c2/af9f2558f93605399f6ebb5809e17c]
-Aug-31 06:08:38.533 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:08:38.538 [Task submitter] INFO  nextflow.Session - [44/406b94] Submitted process > BUILD_ML_FEATURE_TABLE (07_build_ml_feature_table)
-Aug-31 06:08:44.494 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: BUILD_ML_FEATURE_TABLE (07_build_ml_feature_table); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/44/406b944dc393db5bdda926a5d6890c]
-Aug-31 06:08:44.606 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:08:44.610 [Task submitter] INFO  nextflow.Session - [2c/b0cc1a] Submitted process > TRAIN_BASELINE_MODEL (08_train_baseline_model)
-Aug-31 06:10:28.904 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: TRAIN_BASELINE_MODEL (08_train_baseline_model); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/2c/b0cc1a32a260b3c6eedc80d70d6383]
-Aug-31 06:10:29.047 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Aug-31 06:10:29.053 [Task submitter] INFO  nextflow.Session - [b8/c9763b] Submitted process > TEST_SECOND_DATASET (test_luad_generalizability)
-Aug-31 06:10:50.068 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: TEST_SECOND_DATASET (test_luad_generalizability); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/b8/c9763b2ed591b29bf9d3f6b04b15b5]
-Aug-31 06:10:50.115 [main] DEBUG nextflow.Session - Session await > all processes finished
-Aug-31 06:10:50.168 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
-Aug-31 06:10:50.171 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Aug-31 06:10:50.205 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
-Aug-31 06:10:50.285 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=8; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=3m 6s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
-Aug-31 06:10:50.386 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
-Aug-31 06:10:52.414 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
-Aug-31 06:10:53.599 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Aug-31 06:10:53.765 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
-Aug-31 06:10:53.774 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+Sep-01 06:02:12.409 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Sep-01 06:02:12.410 [main] DEBUG nextflow.Session - Session await
+Sep-01 06:02:13.226 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:02:13.234 [Task submitter] INFO  nextflow.Session - [55/eb3ce8] Submitted process > CLEAN_CLINICAL_DATA (02_clean_clinical_data)
+Sep-01 06:02:16.402 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: CLEAN_CLINICAL_DATA (02_clean_clinical_data); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/55/eb3ce85d6f2fde2f88bb4696ec2a6a]
+Sep-01 06:02:16.407 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-01 06:02:16.514 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:02:16.516 [Task submitter] INFO  nextflow.Session - [41/e79a0d] Submitted process > PROCESS_MUTATION_DATA (03_process_mutation_data)
+Sep-01 06:02:25.820 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: PROCESS_MUTATION_DATA (03_process_mutation_data); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/41/e79a0dc09af4959acf4d86523df934]
+Sep-01 06:02:25.878 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:02:25.879 [Task submitter] INFO  nextflow.Session - [a2/374c5d] Submitted process > MATCH_PATIENT_IDS (04_match_patient_ids)
+Sep-01 06:02:30.551 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: MATCH_PATIENT_IDS (04_match_patient_ids); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/a2/374c5d221dc0d300c29771ff9a9a29]
+Sep-01 06:02:30.619 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:02:30.621 [Task submitter] INFO  nextflow.Session - [19/17a39e] Submitted process > GENERATE_SUMMARY_TABLES (05_generate_summary_tables)
+Sep-01 06:02:34.682 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: GENERATE_SUMMARY_TABLES (05_generate_summary_tables); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/19/17a39e5429b8c1037d552e51233f78]
+Sep-01 06:02:34.756 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:02:34.758 [Task submitter] INFO  nextflow.Session - [77/96ff21] Submitted process > GENERATE_FIGURES (06_generate_figures)
+Sep-01 06:02:39.951 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: GENERATE_FIGURES (06_generate_figures); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/77/96ff210423c51c0475c9ba5e0a2b23]
+Sep-01 06:02:40.012 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:02:40.014 [Task submitter] INFO  nextflow.Session - [eb/397e1a] Submitted process > BUILD_ML_FEATURE_TABLE (07_build_ml_feature_table)
+Sep-01 06:02:42.673 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: BUILD_ML_FEATURE_TABLE (07_build_ml_feature_table); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/eb/397e1ad6e8e026101d93ddbda106a2]
+Sep-01 06:02:42.728 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:02:42.730 [Task submitter] INFO  nextflow.Session - [1f/6204c8] Submitted process > TRAIN_BASELINE_MODEL (08_train_baseline_model)
+Sep-01 06:03:12.780 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: TRAIN_BASELINE_MODEL (08_train_baseline_model); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/1f/6204c80425587509e14c9c837639db]
+Sep-01 06:03:12.838 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-01 06:03:12.841 [Task submitter] INFO  nextflow.Session - [b0/0913f5] Submitted process > TEST_SECOND_DATASET (09_test_second_dataset)
+Sep-01 06:03:35.792 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: TEST_SECOND_DATASET (09_test_second_dataset); status: COMPLETED; exit: 0; error: -; workDir: /mnt/c/Cprojects/01_clinical_genomics_ai/workflow/nextflow/work/b0/0913f54dd7a0aceb3497500e84d0d5]
+Sep-01 06:03:35.849 [main] DEBUG nextflow.Session - Session await > all processes finished
+Sep-01 06:03:35.893 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Sep-01 06:03:35.894 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-01 06:03:35.953 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Sep-01 06:03:36.033 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=8; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=1m 21s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Sep-01 06:03:36.215 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Sep-01 06:03:40.084 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Sep-01 06:03:40.563 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-01 06:03:40.617 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Sep-01 06:03:40.618 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

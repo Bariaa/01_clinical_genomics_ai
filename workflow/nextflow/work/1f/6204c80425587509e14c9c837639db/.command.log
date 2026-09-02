@@ -1,0 +1,49 @@
+Loading required package: ggplot2
+Loading required package: lattice
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Type 'citation("pROC")' for a citation.
+
+Attaching package: ‘pROC’
+
+The following objects are masked from ‘package:stats’:
+
+    cov, smooth, var
+
+Exploratory endpoint: risk_group | n = 1097 | predictors: age, sex, TP53_mutated, PIK3CA_mutated, driver_gene_mutated
+Something is wrong; all the ROC metric values are missing:
+      ROC           Sens          Spec    
+ Min.   : NA   Min.   : NA   Min.   : NA  
+ 1st Qu.: NA   1st Qu.: NA   1st Qu.: NA  
+ Median : NA   Median : NA   Median : NA  
+⚠️ XGBoost training failed: Stopping
+ Mean   :NaN   Mean   :NaN   Mean   :NaN  
+ 3rd Qu.: NA   3rd Qu.: NA   3rd Qu.: NA  
+ Max.   : NA   Max.   : NA   Max.   : NA  
+ NA's   :108   NA's   :108   NA's   :108  
+There were 50 or more warnings (use warnings() to see the first 50)
+
+=== Model performance summary ===
+                           model accuracy precision recall f1_score roc_auc
+Accuracy...1 logistic_regression   0.6941     0.734 0.6216   0.6732  0.7198
+Accuracy...2       random_forest   0.6941     0.750 0.5946   0.6633  0.7102
+
+=== Feature importance (Random Forest) ===
+              feature  importance
+1        TP53_mutated 100.0000000
+2 driver_gene_mutated  24.7246343
+3                 age   9.6126890
+4      PIK3CA_mutated   0.8724268
+5             sexmale   0.0000000
+
+✅ Best model: logistic_regression (ROC-AUC = 0.7198)
+✅ All outputs saved: model_performance_summary.csv, feature_importance.csv, confusion_matrix.png, roc_curve.png, baseline_model.rds

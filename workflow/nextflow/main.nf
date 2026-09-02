@@ -108,13 +108,13 @@ process TRAIN_BASELINE_MODEL {
 }
 
 process TEST_SECOND_DATASET {
-    tag "test_luad_generalizability"
+    tag "09_test_second_dataset"
     input:
     val ready
     script:
     """
     cd ${params.project_dir}
-    Rscript scripts/test_luad_generalizability.R
+  Rscript scripts/09_test_second_dataset.R
     """
 }
 

@@ -1,0 +1,37 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+02_clean_clinical: ✅ PASS — 585 rows, 101 cols — unmodified script logic worked
+03_process_mutations: ✅ PASS — 194729 mutation rows — unmodified script logic worked
+04_id_matching: ✅ PASS — 557/585 matched (95.21%)
+survival_status_field: ✅ PASS — 188/585 deceased — field present and usable
+gene_relevance_check: ℹ️ INFO — Top LUAD genes: TTN, MUC16, CSMD3, RYR2, LRP1B, USH2A, TP53, ZFHX4, FLG, XIRP2
+ 
+✅ Test log saved to outputs/reports/luad_generalizability_test_log.csv
+                  step  status
+1     02_clean_clinical ✅ PASS
+2  03_process_mutations ✅ PASS
+3        04_id_matching ✅ PASS
+4 survival_status_field ✅ PASS
+5  gene_relevance_check  ℹ️ INFO
+                                                                           notes
+1                            585 rows, 101 cols — unmodified script logic worked
+2                          194729 mutation rows — unmodified script logic worked
+3                                                       557/585 matched (95.21%)
+4                                    188/585 deceased — field present and usable
+5 Top LUAD genes: TTN, MUC16, CSMD3, RYR2, LRP1B, USH2A, TP53, ZFHX4, FLG, XIRP2
