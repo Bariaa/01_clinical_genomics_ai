@@ -22,3 +22,7 @@ data/processed/*_methylation_cleaned.rds
 # Methylation matrices (too large for GitHub; regenerate via scripts 10-11)
 data/processed/methylation_cleaned.csv
 data/processed/*_methylation_cleaned.rds
+data/processed/multiomics_integrated.csv
+data/processed/multiomics_integrated.rds
+data/processed/multiomics_integrated.csv
+data/processed/multiomics_integrated.rds
