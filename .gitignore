@@ -14,3 +14,11 @@ gdc_manifest.txt
 MANIFEST.txt
 gdc_client_configuration.dtt
 *.tar.gz
+
+# Methylation matrices (too large for GitHub; regenerate via scripts 10-11)
+data/processed/methylation_cleaned.csv
+data/processed/*_methylation_cleaned.rds
+
+# Methylation matrices (too large for GitHub; regenerate via scripts 10-11)
+data/processed/methylation_cleaned.csv
+data/processed/*_methylation_cleaned.rds

@@ -1,0 +1,3 @@
+"stage","n_probes","n_samples","overall_pct_missing","probes_over_threshold","samples_over_threshold","median_probe_pct_missing","median_sample_pct_missing"
+"before_filtering",20000,895,8.539,2905,27,0.223,7.45
+"after_filtering_and_imputation",17095,868,0,0,0,0,0
