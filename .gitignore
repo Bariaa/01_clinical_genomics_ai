@@ -26,3 +26,5 @@ data/processed/multiomics_integrated.csv
 data/processed/multiomics_integrated.rds
 data/processed/multiomics_integrated.csv
 data/processed/multiomics_integrated.rds
+data/processed/*_methylation_id_map.rds
+data/processed/*_three_way_patient_ids.rds
