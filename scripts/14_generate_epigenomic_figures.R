@@ -149,10 +149,10 @@ clinical_full$patient_id <- toupper(trimws(clinical_full$patient_id))
 
 stage_lookup <- clinical_full[, c("patient_id", "ajcc_pathologic_stage")]
 stage_lookup$stage_group <- dplyr::case_when(
-  grepl("^Stage I$|^Stage IA$|^Stage IB$",   stage_lookup$ajcc_pathologic_stage) ~ "Stage I",
-  grepl("^Stage II",                          stage_lookup$ajcc_pathologic_stage) ~ "Stage II",
-  grepl("^Stage III",                         stage_lookup$ajcc_pathologic_stage) ~ "Stage III",
-  grepl("^Stage IV",                          stage_lookup$ajcc_pathologic_stage) ~ "Stage IV",
+  grepl("^Stage IV",  stage_lookup$ajcc_pathologic_stage) ~ "Stage IV",
+  grepl("^Stage III", stage_lookup$ajcc_pathologic_stage) ~ "Stage III",
+  grepl("^Stage II",  stage_lookup$ajcc_pathologic_stage) ~ "Stage II",
+  grepl("^Stage I",   stage_lookup$ajcc_pathologic_stage) ~ "Stage I",
   TRUE ~ NA_character_
 )
 
