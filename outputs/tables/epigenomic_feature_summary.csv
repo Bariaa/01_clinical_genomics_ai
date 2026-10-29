@@ -1,0 +1,6 @@
+"feature_group","n_features","selection_method","supervised","notes","pct_of_total"
+"clinical",6,"carried forward from Month 1","no","patient-level clinical annotation",1.12
+"genomic",3,"carried forward from Month 1","no","mutation burden and driver gene status",0.56
+"methylation_summary",6,"computed across all 17,095 probes","no","mean/median/sd beta, hypo/intermediate/hyper probe counts",1.12
+"methylation_pcs",20,"PCA, first 20 components","no","captures 54.8% of methylation variance",3.74
+"methylation_probes",500,"top 500 by standard deviation","no","individual CpG sites, biologically interpretable",93.46
